@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Quick Start - Monacs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Quick Start";
+    var mkdocs_page_input_path = "quickstart.md";
+    var mkdocs_page_url = "/quickstart/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Monacs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Quick Start</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#quick-start">Quick Start</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#creating-optional-values">Creating optional values</a></li>
+        
+            <li><a class="toctree-l3" href="#working-with-optional-values">Working with optional values</a></li>
+        
+            <li><a class="toctree-l3" href="#combining-calls">Combining calls</a></li>
+        
+            <li><a class="toctree-l3" href="#working-with-resultt">Working with Result&lt;T&gt;</a></li>
+        
+            <li><a class="toctree-l3" href="#unit-type-representing-no-value">Unit - type representing no value</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Components</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../option/">Option</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../result/">Result</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../errors/">ErrorDetails</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../glossary/">Glossary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../apidoc/">API docs</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Monacs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Quick Start</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="quick-start">Quick Start</h1>
+<p>Using Monacs library is pretty easy. First, you have to install it into the project. You can do it from the UI in Visual Studio, using Package Manager Console:</p>
+<pre><code>Install-Package Monacs.Core
+</code></pre>
+<p>If you're using <code>dotnet</code> CLI you can do it as well:</p>
+<pre><code>dotnet add package Monacs.Core
+</code></pre>
+<h2 id="creating-optional-values">Creating optional values</h2>
+<p>Now, let's define some data structure which will have an optional field. If you were creating expense tracking system you may have a class like this:</p>
+<pre><code>using Monacs.Core;
+
+public class Expense
+{
+    public ExpenseCategory Category { get; set; }
+    public decimal Amount { get; set; }
+    public Option&lt;string&gt; Notes { get; set; }
+}
+</code></pre>
+<p><a href="Option.md"><code>Option&lt;T&gt;</code></a> is a generic struct that wraps any value and it annotates that given property, function parameter or result can be empty. Let's create object of <code>Expense</code> class and see it in action:</p>
+<pre><code>using Monacs.Core;
+...
+public Expense CreateExpense(ExpenseCategory category, decimal amount, string notes) =&gt; new Expense
+{
+    Category = category,
+    Amount = amount,
+    Notes = string.IsNullOrEmpty(notes)
+        ? Option.Some(notes)
+        : Option.None&lt;string&gt;()
+}
+</code></pre>
+<p>First thing you will notice is that there are no publicly available constructors for <code>Option&lt;T&gt;</code> type. You create them using <code>Some</code> and <code>None</code> factory methods. This is because the type can only have two states (again <code>Some</code> and <code>None</code>), and Monacs is doing everything to prevent you from having any other possibility here.</p>
+<p>OK, so now Notes field will be <code>Some</code> when <code>notes</code> parameter was null or empty. The code to do it is quite verbose though. We can make it a bit shorter by leveraging <code>using static</code> feature of C#. The code could look like this:</p>
+<pre><code>using static Monacs.Core.Option;
+...
+public Expense CreateExpense(ExpenseCategory category, decimal amount, string notes) =&gt; new Expense
+{
+    Category = category,
+    Amount = amount,
+    Notes = string.IsNullOrEmpty(notes) ? Some(notes) : None&lt;string&gt;()
+}
+</code></pre>
+<p>Things get nicer now. By statically importing <code>Option</code> class we can use methods defined there as they were defined in the same class we're in. <code>Option</code> class is a static class containing set of factory and extension methods that allow you to create and work with <code>Option&lt;T&gt;</code> struct.</p>
+<p>Actually the code we've written there is so common that Monacs contains extension that does exact same thing:</p>
+<pre><code>using Monacs.Core;
+...
+public Expense CreateExpense(ExpenseCategory category, decimal amount, string notes) =&gt; new Expense
+{
+    Category = category,
+    Amount = amount,
+    Notes = notes.ToOption()
+}
+</code></pre>
+<p>There are <code>ToOption()</code> overloads that allow you to convert any reference type (None when null), nullable (None when null) and string (None when null or empty). You should use them instead of <code>Some</code> and <code>None</code> factory methods whenever possible, as they prevent you from doing unwise things like this:</p>
+<pre><code>public static Option&lt;T&gt; ToEvilSome&lt;T&gt;(T value = null) where T : class =&gt;
+    Option.Some(value);
+</code></pre>
+<p>As you may guess, this code will create <code>Some</code> state with potentially <code>null</code> value - this isn't a very safe code, is it?</p>
+<h2 id="working-with-optional-values">Working with optional values</h2>
+<p>Once you've created optional values you'll want to actually use it. Let's say you want to display notes when they are actually present, and display alternate text when it's empty. You can start by creating function like this:</p>
+<pre><code>using Monacs.Core;
+...
+public string GetNotesText(Option&lt;string&gt; notes) =&gt;
+    notes.IsSome
+    ? notes.Value
+    : "There are no notes, sorry!";
+</code></pre>
+<p>Using <code>Value</code> property is convenient, but you shouldn't actually do it unless necessary. In most functional languages you could use pattern matching as an alternative, but the one in C# (as of version 7.0) isn't powerful enough. But no worries, Monacs is here to help:</p>
+<pre><code>using Monacs.Core;
+...
+public string GetNotesText(Option&lt;string&gt; notes) =&gt;
+    notes.Match(
+        some: n =&gt; n.Value
+        none: () =&gt; "There are no notes, sorry!");
+</code></pre>
+<p>Now you won't accidentally use <code>Value</code> when it's not present. <code>Match</code> function is quite powerful, but it's also very very verbose. That's why for many common operations you can find helper methods in Monacs. Shorter version of the code above can look like this:</p>
+<pre><code>using Monacs.Core;
+...
+public string GetNotesText(Option&lt;string&gt; notes) =&gt;
+    notes.GetOrDefault(whenNone: "There are no notes, sorry!");
+</code></pre>
+<h2 id="combining-calls">Combining calls</h2>
+<p>Once you got an optional value, you may want to transform it in one way or another. Getting back to the notes example, let's assume that the editor allows you to use Markdown for formatting and you want to get the word count from your field. To make it clear what are you doing you want to make it explicit, so the code can look like this:</p>
+<pre><code>using Monacs.Core;
+...
+public int GetWordCount(Option&lt;string&gt; notes)
+{
+    if (notes.IsNone)
+        return 0;
+    var strippedNotes = RemoveFormatting(notes.Value);
+    return GetWordCount(strippedNotes);
+}
+</code></pre>
+<p>As with earlier example, you can accidentaly use the Value when it's not set, so you probably want to use a bit different approach. With Monacs you can do it like this:</p>
+<pre><code>using Monacs.Core;
+...
+public int GetWordCount(Option&lt;string&gt; notes) =&gt;
+    notes
+        .Map(RemoveFormatting)
+        .Map(GetWordCount)
+        .GetOrDefault();
+</code></pre>
+<p>Now the code is only using <code>Value</code> when it's actually set. Another important change is that the code is now an expression instead of set of instructions, making code briefer and removing unnecessary noise.</p>
+<p>So you may ask what is this <code>Map</code> function? If you've ever used LINQ then probably you know <code>Select</code> function from it. <code>Map</code> is exactly the same thing, just operating on <code>Option&lt;T&gt;</code> instead of <code>IEnumerable&lt;T&gt;</code>. It takes in the option (as an extension of it) and a mapper function that accepts one value and returns other value. The signature of mapper in C# convention is <code>Func&lt;T1, T2&gt;</code>. Mapper is executed only when input option is <code>Some</code>, and it will return it's result wrapped into <code>Some</code>. Otherwise, it will return <code>None&lt;T2&gt;</code>. If the function above was to return <code>Option&lt;int&gt;</code>, giving <code>None</code> when there are no notes, code without <code>Map</code> could look like this:</p>
+<pre><code>using Monacs.Core;
+using static Monacs.Core.Option;
+...
+public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes)
+{
+    if (notes.IsNone)
+        return None&lt;int&gt;();
+    var strippedNotes = RemoveFormatting(notes.Value);
+    var wordCount = GetWordCount(strippedNotes);
+    return Some(wordCount);
+}
+</code></pre>
+<p>Using <code>Map</code> it gets much simpler (and safer):</p>
+<pre><code>using Monacs.Core;
+...
+public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes) =&gt;
+    notes.Map(RemoveFormatting).Map(GetWordCount);
+</code></pre>
+<p>So <code>Map</code> is really nice helper function, but what would happen if the <code>GetWordCount</code> function was returning <code>Option&lt;int&gt;</code>, giving <code>None</code> when there are no words? We would get compile error that the value returned doesn't match function signature. Now it would be <code>Option&lt;Option&lt;int&gt;&gt;</code>, which doesn't look good. Fortunatelly there is one more function that can solve this particular problem. It's called <code>Bind</code>. Let's see it in action, given the described case:</p>
+<pre><code>using Monacs.Core;
+...
+public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes) =&gt;
+    notes.Map(RemoveFormatting).Bind(GetWordCount);
+</code></pre>
+<p>Now the returned value matches the signature again. We're good to go. So what's this <code>Bind</code> function? It is very similar to <code>Map</code>, the difference being signature of the function it accepts as a parameter. In <code>Bind</code> it's <code>Func&lt;T1, Option&lt;T2&gt;&gt;</code> and it's called <code>binder</code>. If the input to <code>Bind</code> is <code>Some</code>, it will return result of <code>binder</code> without wrapping it into <code>Some</code>, so it will actually return <code>None</code> when <code>binder</code> returns <code>None</code>. That allows for even more composability.</p>
+<p>This should give you a brief overview of how to work with <code>Option&lt;T&gt;</code> type, but what about <code>Result&lt;T&gt;</code>? It turns out it works in the same way, so let's explore the differences.</p>
+<h2 id="working-with-resultt">Working with <code>Result&lt;T&gt;</code></h2>
+<p>Similar to <code>Option&lt;T&gt;</code>, <a href="Result.md"><code>Result&lt;T&gt;</code> type</a> is a struct and has two possible states - <code>Ok</code> with a data of type <code>T</code> in the <code>Value</code> property, and <code>Error</code> with a data of <a href="Errors.md">type <code>ErrorDetails</code></a> in the <code>Error</code> property. This makes it perfect candidate for second common case, where you have a function and it may fail to execute properly. Usualy in such case you can expect an exception to be thrown. The problem with exceptions is that you don't have any explicit way to say that the function may fail and which exceptions it may throw (apart from comments). Handling exceptions is also problematic, as you need to decide when to wrap the code into <code>try...catch</code> - having it everywhere requires a lot of code, and it's also impacting performance quite substantialy. So just like <code>Option&lt;T&gt;</code> mitigates the problem of null, <code>Result&lt;T&gt;</code> deals with exceptions.</p>
+<p>There is very similar set of extensions provided for <code>Result&lt;T&gt;</code> to the ones for <code>Option&lt;T&gt;</code>. The most important ones like <code>Bind</code>, <code>Map</code> and <code>Match</code> are there, as well as many others. There are also async versions of them, provided in <code>Monacs.Core.Async</code> namespace, such as <code>BindAsync</code> or <code>MapAsync</code>. You can then operate on <code>Task&lt;Result&lt;T&gt;&gt;</code>, have async <code>binder</code> or <code>mapper</code> functions and so on. One thing to remember is that once you jump into async code, you will have to keep using async variants to the the end of the function chain - until you await on the chain and get the underlying <code>Result&lt;T&gt;</code>. See the example below:</p>
+<pre><code>public async Task&lt;Result&lt;Unit&gt;&gt; UpdateCustomerAddress(UpdateCustomerAddressDto newCustomerAddress)
+{
+    var result = await Validate(newCustomerAddress)
+        // Validate returns Result&lt;UpdateCustomerAddressDto&gt;
+        .BindAsync(newAddress =&gt; GetCustomer(newAddress.Id).MapAsync(customer =&gt; (customer, newAddress)))
+        // GetCustomer returns Task&lt;Result&lt;Customer&gt;&gt;, so we use MapAsync
+        .MapAsync(UpdateCustomerAddress)
+        // UpdateCustomerAddress takes tuple of Customer and UpdateCustomerAddressDto and returns Result&lt;Customer&gt;
+        .BindAsync(PersistCustomer)
+        // PersistCustomer returns Task&lt;Result&lt;Customer&gt;&gt;
+        .DoWhenErrorAsync(LogError);
+
+    return result.Ignore();
+    // result is now Result&lt;Customer&gt;, we can ignore the value (if we use CQRS approach) using non-async extension
+}
+</code></pre>
+<p>You can find list of available extensions in the <a href="../TODO">API documentation</a>.</p>
+<h2 id="unit-type-representing-no-value"><code>Unit</code> - type representing no value</h2>
+<p>To avoid need to duplicate the APIs for the functions that don't need to return anything (defined as <code>void</code> in C#) Monacs uses <a href="Unit.md"><code>Unit</code> type</a>, known from other languages (like F#) and libraries (like Reactive Extensions). <code>Unit</code> Has only one value and it's available as <code>Unit.Default</code> property. You can use it as a substitute for any type whenever you need some, but you don't care about the value, e.g. you can return <code>Task&lt;Unit&gt;</code> (equivalent of non-generic <code>Task</code>) or <code>Func&lt;T&gt;</code> instead of <code>Action</code>. <code>Result&lt;Unit&gt;</code> can be used as a return type for functions with side effects that don't return any value, e.g. saving data to the database. There are some additional extensions provided for <code>Result&lt;Unit&gt;</code> in <code>Monacs.Core.Unit</code> namespace, like the mentioned above <code>Ignore</code> function.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../option/" class="btn btn-neutral float-right" title="Option">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../option/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

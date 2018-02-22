@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Option - Monacs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Option";
+    var mkdocs_page_input_path = "option.md";
+    var mkdocs_page_url = "/option/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Monacs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../quickstart/">Quick Start</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Components</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">Option</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#monacscoreoption">Monacs.Core.Option</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l4" href="#when-to-use-it">When to use it</a></li>
+        
+            <li><a class="toctree-l4" href="#how-to-use-it">How to use it</a></li>
+        
+            <li><a class="toctree-l4" href="#summary">Summary</a></li>
+        
+        </ul>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../result/">Result</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../errors/">ErrorDetails</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../glossary/">Glossary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../apidoc/">API docs</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Monacs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Components &raquo;</li>
+        
+      
+    
+    <li>Option</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="monacscoreoption">Monacs.Core.Option<T></h1>
+<p><code>Option&lt;T&gt;</code> type is an implementation of Maybe monad. It has two possible states - default one representing absence of value (<code>None</code>) and the other one representing presence of value (<code>Some</code>). <code>Option&lt;T&gt;</code> wraps value that can be absent, in similar way as <code>Nullable&lt;T&gt;</code> wraps value types. The are core differences though. While <code>Nullable&lt;T&gt;</code> only wraps structs (value types), <code>Option&lt;T&gt;</code> works with all kinds of types, making things more consistent. The value representing absence of data in <code>Nullable&lt;T&gt;</code> is the same as for reference types - both use <code>null</code> for that purpose. With <code>Option&lt;T&gt;</code> you don't really care what is the value representing absence of data, because it's the property of the type itself.</p>
+<h2 id="when-to-use-it">When to use it</h2>
+<p>The main use case of <code>Option</code> type is modeling properties of data structures which are not required to create given structure. Let's say we want to build expense tracking system and need to model Expense enity. To make things simple, we want it to contain 3 properties: category, amount and optional notes. We may start with creating it like this:</p>
+<pre><code>public class Expense
+{
+    public ExpenseCategory Category { get; set; }
+    public decimal Amount { get; set; }
+    public string Notes { get; set; }
+}
+</code></pre>
+<p>This design has quite a few flaws, one of them is the fact that we don't state explicitly which properties are required and which are optional. Let's make a simple change:</p>
+<pre><code>public class Expense
+{
+    public ExpenseCategory Category { get; set; }
+    public decimal Amount { get; set; }
+    public Option&lt;string&gt; Notes { get; set; }
+}
+</code></pre>
+<p>Now we explicitly say that Notes can be present or not. That not only applies to the structure of the class, but also to the usage.</p>
+<pre><code>public string GetExpenseNotesUppercase(Expense expense) =&gt;
+    expense.Notes.ToUpper();
+</code></pre>
+<p>The problem with the code above is that it will crash badly with <code>NullReferenceException</code> if the Notes field is null. Of course we can fix that:</p>
+<pre><code>public string GetExpenseNotesUppercase(Expense expense) =&gt;
+    expense.Notes?.ToUpper();
+</code></pre>
+<p>Not much more complicated, but we only postponed the the issue to the caller - we'll return <code>null</code> if the value was <code>null</code> in the first place. Of course we could make it return some proper value each time:</p>
+<pre><code>public string GetExpenseNotesUppercase(Expense expense) =&gt;
+    expense.Notes?.ToUpper() ?? string.Empty;
+</code></pre>
+<p>But we get to the same issue that we had with our data structure - we don't state if the return value will always be present. Consumers of this method still need to consider <code>null</code> case - just in case you decide to change the internal implementation details.</p>
+<p>Now let's see how it can look with <code>Option&lt;T&gt;</code> type:</p>
+<pre><code>public Option&lt;string&gt; GetExpenseNotesUppercase(Expense expense) =&gt;
+    expense.Notes.Map(s =&gt; s.ToUpper());
+</code></pre>
+<p>Note that signature of the function has changed, and now we say explicitly that you may not get the value. Consumers will need to handle it directly, making it harder to get unexpected errors.</p>
+<p>One other benefit is that you can have now consistent way of checking if the value is there - just by checking <code>IsSome</code> or <code>IsNone</code> property of the option. If you, for example, would like to hide the Notes field in the UI, you've got it for free. But it doesn't stop there.</p>
+<h2 id="how-to-use-it">How to use it</h2>
+<p>Having one type to wrap all the optional values gives you the power to extend things easily. If you've ever used LINQ, you should already know how convenient it can be. Actually the <code>Option&lt;T&gt;</code> type has the same superpowers as <code>IEnumerable&lt;T&gt;</code>, allowing you to chain calls as long as your inputs and outputs are options (fluent APIs, anyone?). Take a look at this example. Let's say that we want to extract the list of hashtags present in the <code>Notes</code> field mentioned above, and also make all of them lowercase.</p>
+<pre><code>public Option&lt;IEnumerable&lt;string&gt;&gt; GetHashtags(string s) {...}
+
+public Option&lt;List&lt;string&gt;&gt; GetNotesHashtags(Expense expense) =&gt;
+    expense.Notes
+        .Map(s =&gt; s.ToLower())
+        .Bind(GetHashtags);
+        .Map(x =&gt; x.ToList());
+</code></pre>
+<p>Above code is actually equivalent to this:</p>
+<pre><code>public Option&lt;List&lt;string&gt;&gt; GetNotesHashtags(Expense expense)
+{
+    if (expense.Notes.IsNone)
+        return Option.None&lt;List&lt;string&gt;&gt;();
+    var lowercaseNotes = expense.Notes.Value.ToLower();
+    var hashtags = lowercaseNotes.GetHashtags(s);
+    if (hashtags.IsNone)
+        return Option.None&lt;List&lt;string&gt;&gt;();
+    return hashtags.ToList();
+}
+</code></pre>
+<p>Not only there is less code to write and read in the first example, but it also reduces the need for naming things.</p>
+<p>You can also reimplement it without option at all, for example like this:</p>
+<pre><code>public List&lt;string&gt; GetNotesHashtags(Expense expense)
+{
+    if (string.IsNullOrEmpty(expense.Notes))
+        return null;
+    var lowercaseNotes = expense.Notes.ToLower();
+    var hashtags = lowercaseNotes.GetHashtags(s);
+    return hashtags?.ToList();
+}
+</code></pre>
+<p>This seems like a good option, especially with null propagation operator in C# being very convenient, but one thing you have to remember is that it doesn't solve the problem of null. It only moves the responsibility of handling it from one piece of code to another.</p>
+<h2 id="summary">Summary</h2>
+<p>As you can see, option type has quite a few benefits:</p>
+<ul>
+<li>explicity - you state in a very obvious way that something may be not present</li>
+<li>brevity - with just a few helpers you can make code much more concise</li>
+<li>extensibility - the same simple helpers build powerful fluent API</li>
+<li>safety - you substantialy reduce the risk of having <code>NullReferenceException</code></li>
+<li>versality - the same type represents the lack of value for structs and classes</li>
+</ul>
+<p>When you start using it, you realize that it is a sweet spot between convenience of simple null propagation and complexity of multi-level null handling.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../result/" class="btn btn-neutral float-right" title="Result">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../quickstart/" class="btn btn-neutral" title="Quick Start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../quickstart/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../result/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>

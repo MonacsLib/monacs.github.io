@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API docs - Monacs</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API docs";
+    var mkdocs_page_input_path = "apidoc.md";
+    var mkdocs_page_url = "/apidoc/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Monacs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../quickstart/">Quick Start</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Components</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../option/">Option</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../result/">Result</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../errors/">ErrorDetails</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../glossary/">Glossary</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">API docs</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#errorlevel">ErrorLevel</a></li>
+    
+
+    <li class="toctree-l2"><a href="#errors">Errors</a></li>
+    
+
+    <li class="toctree-l2"><a href="#option">Option</a></li>
+    
+
+    <li class="toctree-l2"><a href="#result">Result</a></li>
+    
+
+    <li class="toctree-l2"><a href="#result_1">Result</a></li>
+    
+
+    <li class="toctree-l2"><a href="#result_2">Result</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Monacs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API docs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><a id="Monacs.Core.ErrorLevel"></a></p>
+<h2 id="errorlevel">ErrorLevel</h2>
+<p><em>enum Monacs.Core.ErrorLevel</em></p>
+<p>Represents the severity of the error.</p>
+<p><strong>Enum Values</strong></p>
+<ul>
+<li><strong>Trace</strong></li>
+<li><strong>Debug</strong></li>
+<li><strong>Info</strong></li>
+<li><strong>Warn</strong></li>
+<li><strong>Error</strong></li>
+<li><strong>Fatal</strong></li>
+</ul>
+<hr />
+<p><a id="Monacs.Core.Errors"></a></p>
+<h2 id="errors">Errors</h2>
+<p><em>class Monacs.Core.Errors</em></p>
+<p>Contains factory methods to create instances of <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> in a more convenient way.</p>
+<p><strong>Static Methods</strong></p>
+<p><a id="Monacs.Core.Errors.Trace(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Trace</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Trace">Monacs.Core.ErrorLevel.Trace</a> .  </li>
+</ul>
+<p><a id="Monacs.Core.Errors.Debug(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Debug</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Debug">Monacs.Core.ErrorLevel.Debug</a> .  </li>
+</ul>
+<p><a id="Monacs.Core.Errors.Info(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Info</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Info">Monacs.Core.ErrorLevel.Info</a> .  </li>
+</ul>
+<p><a id="Monacs.Core.Errors.Warn(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Warn</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Warn">Monacs.Core.ErrorLevel.Warn</a> .  </li>
+</ul>
+<p><a id="Monacs.Core.Errors.Error(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Error</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Error">Monacs.Core.ErrorLevel.Error</a> .  </li>
+</ul>
+<p><a id="Monacs.Core.Errors.Fatal(System.String,System.String,System.Exception,System.Object)"></a></p>
+<ul>
+<li><em>ErrorDetails</em> <strong>Fatal</strong> <em>([String message], [String key], [Exception exception], [Object metadata])</em><br />
+  Creates <a href="#Monacs.Core.ErrorDetails">Monacs.Core.ErrorDetails</a> with level <a href="#Monacs.Core.ErrorLevel.Fatal">Monacs.Core.ErrorLevel.Fatal</a> .  </li>
+</ul>
+<hr />
+<p><a id="Monacs.Core.Option"></a></p>
+<h2 id="option">Option</h2>
+<p><em>class Monacs.Core.Option</em></p>
+<p>Contains the set of extensions to work with the [Monacs.Core.Option<code>1](#Monacs.Core.Option</code>1) type.</p>
+<p><strong>Static Methods</strong></p>
+<p><a id="Monacs.Core.Option.Some()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>Some</strong> <em>(T value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.None"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>None</strong> <em>()</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.OfObject()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>OfObject</strong> <em>(T value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.ToOption()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>ToOption</strong> <em>(T value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.OfNullable()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>OfNullable</strong> <em>(Nullable&lt;T&gt; value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.ToOption()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>ToOption</strong> <em>(Nullable&lt;T&gt; value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.ToNullable()"></a></p>
+<ul>
+<li><em>Nullable&lt;T&gt;</em> <strong>ToNullable</strong> <em>(Option&lt;T&gt; value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.OfString(System.String)"></a></p>
+<ul>
+<li><em>Option&lt;String&gt;</em> <strong>OfString</strong> <em>(String value)</em><br />
+  Converts the string value to the [Monacs.Core.Option<code>1](#Monacs.Core.Option</code>1) type.
+If the value is null or empty string, the None case is yielded.
+Otherwise Some case with provided value is returned.  </li>
+</ul>
+<p><a id="Monacs.Core.Option.ToOption(System.String)"></a></p>
+<ul>
+<li><em>Option&lt;String&gt;</em> <strong>ToOption</strong> <em>(String value)</em><br />
+  Converts the string value to the <a href="#Option{string}">Option{string}</a> type.
+If the value is null or empty string, the None case is yielded.
+Otherwise Some case with provided value is returned.<br />
+  Extension method variant of <a href="#Monacs.Core.Option.OfString(System.String)">Monacs.Core.Option.OfString(System.String)</a> </li>
+</ul>
+<p><a id="Monacs.Core.Option.OfResult()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>OfResult</strong> <em>(Result&lt;T&gt; value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.ToOption()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>ToOption</strong> <em>(Result&lt;T&gt; value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.TryGetOption(,)"></a></p>
+<ul>
+<li><em>Option&lt;TValue&gt;</em> <strong>TryGetOption</strong> <em>(IDictionary&lt;TKey, TValue&gt; dictionary, TKey key)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.TryGetOption(,)"></a></p>
+<ul>
+<li><em>Option&lt;IEnumerable&lt;TValue&gt;&gt;</em> <strong>TryGetOption</strong> <em>(ILookup&lt;TKey, TValue&gt; lookup, TKey key)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Match(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>Match</strong> <em>(Option&lt;TIn&gt; option, Func&lt;TIn, TOut&gt; some, Func&lt;TOut&gt; none)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.MatchTo(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>MatchTo</strong> <em>(Option&lt;TIn&gt; option, TOut some, TOut none)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Bind(,)"></a></p>
+<ul>
+<li><em>Option&lt;TOut&gt;</em> <strong>Bind</strong> <em>(Option&lt;TIn&gt; option, Func&lt;TIn, Option&lt;TOut&gt;&gt; binder)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Map(,)"></a></p>
+<ul>
+<li><em>Option&lt;TOut&gt;</em> <strong>Map</strong> <em>(Option&lt;TIn&gt; option, Func&lt;TIn, TOut&gt; mapper)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.GetOrDefault(,)"></a></p>
+<ul>
+<li><em>T</em> <strong>GetOrDefault</strong> <em>(Option&lt;T&gt; option, [T whenNone])</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.GetOrDefault(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>GetOrDefault</strong> <em>(Option&lt;TIn&gt; option, Func&lt;TIn, TOut&gt; getter, [TOut whenNone])</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Do(,)"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>Do</strong> <em>(Option&lt;T&gt; option, Action&lt;T&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.DoWhenNone(,System.Action)"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>DoWhenNone</strong> <em>(Option&lt;T&gt; option, Action action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Choose()"></a></p>
+<ul>
+<li><em>IEnumerable&lt;T&gt;</em> <strong>Choose</strong> <em>(IEnumerable&lt;Option&lt;T&gt;&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.Sequence()"></a></p>
+<ul>
+<li><em>Option&lt;IEnumerable&lt;T&gt;&gt;</em> <strong>Sequence</strong> <em>(IEnumerable&lt;Option&lt;T&gt;&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.TryFind(,)"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>TryFind</strong> <em>(IEnumerable&lt;T&gt; items, Func&lt;T, Boolean&gt; predicate)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.TryFirst()"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>TryFirst</strong> <em>(IEnumerable&lt;T&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Option.TryElementAt(,System.Int32)"></a></p>
+<ul>
+<li><em>Option&lt;T&gt;</em> <strong>TryElementAt</strong> <em>(IEnumerable&lt;T&gt; items, Int32 index)</em>  </li>
+</ul>
+<hr />
+<p><a id="Monacs.Core.Result"></a></p>
+<h2 id="result">Result</h2>
+<p><em>class Monacs.Core.Result</em></p>
+<p>Contains the set of extensions to work with the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type.</p>
+<p><strong>Static Methods</strong></p>
+<p><a id="Monacs.Core.Result.Ok()"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>Ok</strong> <em>(T value)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Error(Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>Error</strong> <em>(ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfObject(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfObject</strong> <em>(T value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfObject(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfObject</strong> <em>(T value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(T value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(T value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfNullable(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfNullable</strong> <em>(Nullable&lt;T&gt; value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfNullable(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfNullable</strong> <em>(Nullable&lt;T&gt; value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(Nullable&lt;T&gt; value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(Nullable&lt;T&gt; value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfString(System.String,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;String&gt;</em> <strong>OfString</strong> <em>(String value, ErrorDetails error)</em><br />
+  Converts the string value to the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type.
+If the value is null or empty string, the Error case is yielded.
+Otherwise Ok case with provided value is returned.  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfString(System.String,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;String&gt;</em> <strong>OfString</strong> <em>(String value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(System.String,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;String&gt;</em> <strong>ToResult</strong> <em>(String value, ErrorDetails error)</em><br />
+  Converts the string value to the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type.
+If the value is null or empty string, the Error case is yielded.
+Otherwise Ok case with provided value is returned.<br />
+  Extension method variant of <a href="#Monacs.Core.Result.OfString(System.String,Monacs.Core.ErrorDetails)">Monacs.Core.Result.OfString(System.String,Monacs.Core.ErrorDetails)</a> </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(System.String,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;String&gt;</em> <strong>ToResult</strong> <em>(String value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfOption(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfOption</strong> <em>(Option&lt;T&gt; value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.OfOption(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>OfOption</strong> <em>(Option&lt;T&gt; value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(Option&lt;T&gt; value, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ToResult(,System.Func`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>ToResult</strong> <em>(Option&lt;T&gt; value, Func&lt;ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryGetResult(,,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;TValue&gt;</em> <strong>TryGetResult</strong> <em>(IDictionary&lt;TKey, TValue&gt; dictionary, TKey key, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryGetResult(,,)"></a></p>
+<ul>
+<li><em>Result&lt;TValue&gt;</em> <strong>TryGetResult</strong> <em>(IDictionary&lt;TKey, TValue&gt; dictionary, TKey key, Func&lt;TKey, ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryGetResult(,,Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;IEnumerable&lt;TValue&gt;&gt;</em> <strong>TryGetResult</strong> <em>(ILookup&lt;TKey, TValue&gt; lookup, TKey key, ErrorDetails error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryGetResult(,,)"></a></p>
+<ul>
+<li><em>Result&lt;IEnumerable&lt;TValue&gt;&gt;</em> <strong>TryGetResult</strong> <em>(ILookup&lt;TKey, TValue&gt; lookup, TKey key, Func&lt;TKey, ErrorDetails&gt; errorFunc)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Match(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>Match</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, TOut&gt; ok, Func&lt;ErrorDetails, TOut&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.MatchTo(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>MatchTo</strong> <em>(Result&lt;TIn&gt; result, TOut ok, TOut error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Bind(,)"></a></p>
+<ul>
+<li><em>Result&lt;TOut&gt;</em> <strong>Bind</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Result&lt;TOut&gt;&gt; binder)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Map(,)"></a></p>
+<ul>
+<li><em>Result&lt;TOut&gt;</em> <strong>Map</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, TOut&gt; mapper)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.GetOrDefault(,)"></a></p>
+<ul>
+<li><em>T</em> <strong>GetOrDefault</strong> <em>(Result&lt;T&gt; result, [T whenError])</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.GetOrDefault(,,)"></a></p>
+<ul>
+<li><em>TOut</em> <strong>GetOrDefault</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, TOut&gt; getter, [TOut whenError])</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Do(,)"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>Do</strong> <em>(Result&lt;T&gt; result, Action&lt;T&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.DoWhenError(,System.Action`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>DoWhenError</strong> <em>(Result&lt;T&gt; result, Action&lt;ErrorDetails&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Choose()"></a></p>
+<ul>
+<li><em>IEnumerable&lt;T&gt;</em> <strong>Choose</strong> <em>(IEnumerable&lt;Result&lt;T&gt;&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.ChooseErrors()"></a></p>
+<ul>
+<li><em>IEnumerable&lt;ErrorDetails&gt;</em> <strong>ChooseErrors</strong> <em>(IEnumerable&lt;Result&lt;T&gt;&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.Sequence()"></a></p>
+<ul>
+<li><em>Result&lt;IEnumerable&lt;T&gt;&gt;</em> <strong>Sequence</strong> <em>(IEnumerable&lt;Result&lt;T&gt;&gt; items)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryCatch(,System.Func`2[[System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Result&lt;T&gt;</em> <strong>TryCatch</strong> <em>(Func&lt;T&gt; func, Func&lt;Exception, ErrorDetails&gt; errorHandler)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Result.TryCatch(,,)"></a></p>
+<ul>
+<li><em>Result&lt;TOut&gt;</em> <strong>TryCatch</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, TOut&gt; func, Func&lt;TIn, Exception, ErrorDetails&gt; errorHandler)</em>  </li>
+</ul>
+<hr />
+<p><a id="Monacs.Core.Unit.Result"></a></p>
+<h2 id="result_1">Result</h2>
+<p><em>class Monacs.Core.Unit.Result</em></p>
+<p>Contains the set of extensions to work with the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type.</p>
+<p><strong>Static Methods</strong></p>
+<p><a id="Monacs.Core.Unit.Result.Ok"></a></p>
+<ul>
+<li><em>Result&lt;Unit&gt;</em> <strong>Ok</strong> <em>()</em><br />
+  Creates the Ok case instance of the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) .  </li>
+</ul>
+<p><a id="Monacs.Core.Unit.Result.Error(Monacs.Core.ErrorDetails)"></a></p>
+<ul>
+<li><em>Result&lt;Unit&gt;</em> <strong>Error</strong> <em>(ErrorDetails error)</em><br />
+  Creates the Error case instance of the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type, containing error instead of value.  </li>
+</ul>
+<p><a id="Monacs.Core.Unit.Result.Ignore()"></a></p>
+<ul>
+<li><em>Result&lt;Unit&gt;</em> <strong>Ignore</strong> <em>(Result&lt;T&gt; result)</em>  </li>
+</ul>
+<hr />
+<p><a id="Monacs.Core.Async.Result"></a></p>
+<h2 id="result_2">Result</h2>
+<p><em>class Monacs.Core.Async.Result</em></p>
+<p>Contains the set of async extensions to work with the [Monacs.Core.Result<code>1](#Monacs.Core.Result</code>1) type.</p>
+<p><strong>Static Methods</strong></p>
+<p><a id="Monacs.Core.Async.Result.BindAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>BindAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Task&lt;Result&lt;TOut&gt;&gt;&gt; binder)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.BindAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>BindAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, Task&lt;Result&lt;TOut&gt;&gt;&gt; binder)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.BindAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>BindAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, Result&lt;TOut&gt;&gt; binder)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MapAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>MapAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; mapper)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MapAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>MapAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; mapper)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MapAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>MapAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, TOut&gt; mapper)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; ok, Func&lt;ErrorDetails, Task&lt;TOut&gt;&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; ok, Func&lt;ErrorDetails, TOut&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, TOut&gt; ok, Func&lt;ErrorDetails, Task&lt;TOut&gt;&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, TOut&gt; ok, Func&lt;ErrorDetails, TOut&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; ok, Func&lt;ErrorDetails, Task&lt;TOut&gt;&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; ok, Func&lt;ErrorDetails, TOut&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.MatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;TOut&gt;</em> <strong>MatchAsync</strong> <em>(Task&lt;Result&lt;TIn&gt;&gt; result, Func&lt;TIn, TOut&gt; ok, Func&lt;ErrorDetails, Task&lt;TOut&gt;&gt; error)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.IgnoreAsync()"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;Unit&gt;&gt;</em> <strong>IgnoreAsync</strong> <em>(Task&lt;Result&lt;T&gt;&gt; result)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoAsync</strong> <em>(Task&lt;Result&lt;T&gt;&gt; result, Action&lt;T&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoAsync</strong> <em>(Result&lt;T&gt; result, Func&lt;T, Task&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoAsync(,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoAsync</strong> <em>(Task&lt;Result&lt;T&gt;&gt; result, Func&lt;T, Task&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoWhenErrorAsync(,System.Action`1[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoWhenErrorAsync</strong> <em>(Task&lt;Result&lt;T&gt;&gt; result, Action&lt;ErrorDetails&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoWhenErrorAsync(,System.Func`2[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Threading.Tasks.Task, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]])"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoWhenErrorAsync</strong> <em>(Result&lt;T&gt; result, Func&lt;ErrorDetails, Task&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.DoWhenErrorAsync(,System.Func`2[[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Threading.Tasks.Task, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]])"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>DoWhenErrorAsync</strong> <em>(Task&lt;Result&lt;T&gt;&gt; result, Func&lt;ErrorDetails, Task&gt; action)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.FlipAsync()"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>FlipAsync</strong> <em>(Result&lt;Task&lt;T&gt;&gt; result)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.TryCatchAsync(,System.Func`2[[System.Exception, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Monacs.Core.ErrorDetails, Monacs.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;T&gt;&gt;</em> <strong>TryCatchAsync</strong> <em>(Func&lt;Task&lt;T&gt;&gt; func, Func&lt;Exception, ErrorDetails&gt; errorHandler)</em>  </li>
+</ul>
+<p><a id="Monacs.Core.Async.Result.TryCatchAsync(,,)"></a></p>
+<ul>
+<li><em>Task&lt;Result&lt;TOut&gt;&gt;</em> <strong>TryCatchAsync</strong> <em>(Result&lt;TIn&gt; result, Func&lt;TIn, Task&lt;TOut&gt;&gt; func, Func&lt;TIn, Exception, ErrorDetails&gt; errorHandler)</em>  </li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../glossary/" class="btn btn-neutral" title="Glossary"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../glossary/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
