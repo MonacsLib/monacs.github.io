@@ -286,7 +286,7 @@ public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes) =&gt;
     // result is now Result&lt;Customer&gt;, we can ignore the value (if we use CQRS approach) using non-async extension
 }
 </code></pre>
-<p>You can find list of available extensions in the <a href="../TODO">API documentation</a>.</p>
+<p>You can find list of available extensions in the <a href="../apidoc/">API documentation</a>.</p>
 <h2 id="unit-type-representing-no-value"><code>Unit</code> - type representing no value</h2>
 <p>To avoid need to duplicate the APIs for the functions that don't need to return anything (defined as <code>void</code> in C#) Monacs uses <a href="Unit.md"><code>Unit</code> type</a>, known from other languages (like F#) and libraries (like Reactive Extensions). <code>Unit</code> Has only one value and it's available as <code>Unit.Default</code> property. You can use it as a substitute for any type whenever you need some, but you don't care about the value, e.g. you can return <code>Task&lt;Unit&gt;</code> (equivalent of non-generic <code>Task</code>) or <code>Func&lt;T&gt;</code> instead of <code>Action</code>. <code>Result&lt;Unit&gt;</code> can be used as a return type for functions with side effects that don't return any value, e.g. saving data to the database. There are some additional extensions provided for <code>Result&lt;Unit&gt;</code> in <code>Monacs.Core.Unit</code> namespace, like the mentioned above <code>Ignore</code> function.</p>
               

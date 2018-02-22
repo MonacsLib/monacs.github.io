@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/",
-            "text": "Monacs - documentation\n\n\nMonacs is a library that provides a set of types and functions that can be used to substantialy change the approach you use to write your C# code. And while it won't change object-oriented language into fully-featured functional language, it gives you oportunity to use some of the FP concepts in your C# code today.\n\n\n\n\nIntro\n\n\nQuick Start\n\n\nGlossary\n\n\nTypes\n\n\nOption\\\n\n\nResult\\\n\n\nErrorDetails",
+            "text": "Monacs - documentation\n\n\nMonacs is a library that provides a set of types and functions that can be used to substantialy change the approach you use to write your C# code. And while it won't change object-oriented language into fully-featured functional language, it gives you oportunity to use some of the FP concepts in your C# code today.\n\n\n\n\nIntro\n\n\nQuick Start\n\n\nGlossary\n\n\n\n\n\n\nTypes\n\n\nOption\n\n\nResult\n\n\nErrorDetails\n\n\n\n\n\n\n API documentation",
             "title": "Index"
         },
         {
             "location": "/#monacs-documentation",
-            "text": "Monacs is a library that provides a set of types and functions that can be used to substantialy change the approach you use to write your C# code. And while it won't change object-oriented language into fully-featured functional language, it gives you oportunity to use some of the FP concepts in your C# code today.   Intro  Quick Start  Glossary  Types  Option\\  Result\\  ErrorDetails",
+            "text": "Monacs is a library that provides a set of types and functions that can be used to substantialy change the approach you use to write your C# code. And while it won't change object-oriented language into fully-featured functional language, it gives you oportunity to use some of the FP concepts in your C# code today.   Intro  Quick Start  Glossary    Types  Option  Result  ErrorDetails     API documentation",
             "title": "Monacs - documentation"
         },
         {
@@ -97,12 +97,12 @@
         },
         {
             "location": "/errors/",
-            "text": "Monacs.Core.ErrorDetails\n\n\nErrorDetails\n type contains the description of the error that occured within the application. It is required by the [\nResult<T>\n type] in the \nError\n case. To construct the instance of this type you need to use static factory methods from the \nErrors\n class.\n\n\nErrorDetails\n contains several fields that help to describe the error to handle or log it properly in the later stage of the application execution. All fields apart from \nLevel\n are optional.",
+            "text": "Monacs.Core.ErrorDetails\n\n\nErrorDetails\n type contains the description of the error that occured within the application. It is required by the \nResult<T>\n type\n in the \nError\n case. To construct the instance of this type you need to use static factory methods from the \nErrors\n class.\n\n\nErrorDetails\n contains several fields that help to describe the error to handle or log it properly in the later stage of the application execution. All fields apart from \nLevel\n are optional.",
             "title": "ErrorDetails"
         },
         {
             "location": "/errors/#monacscoreerrordetails",
-            "text": "ErrorDetails  type contains the description of the error that occured within the application. It is required by the [ Result<T>  type] in the  Error  case. To construct the instance of this type you need to use static factory methods from the  Errors  class.  ErrorDetails  contains several fields that help to describe the error to handle or log it properly in the later stage of the application execution. All fields apart from  Level  are optional.",
+            "text": "ErrorDetails  type contains the description of the error that occured within the application. It is required by the  Result<T>  type  in the  Error  case. To construct the instance of this type you need to use static factory methods from the  Errors  class.  ErrorDetails  contains several fields that help to describe the error to handle or log it properly in the later stage of the application execution. All fields apart from  Level  are optional.",
             "title": "Monacs.Core.ErrorDetails"
         },
         {
