@@ -66,7 +66,7 @@
     <a class="current" href="./">Option</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#monacscoreoption">Monacs.Core.Option</a></li>
+    <li class="toctree-l3"><a href="#monacscoreoptiont">Monacs.Core.Option&lt;T&gt;</a></li>
     
         <ul>
         
@@ -138,7 +138,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="monacscoreoption">Monacs.Core.Option<T></h1>
+                <h1 id="monacscoreoptiont">Monacs.Core.Option&lt;T&gt;</h1>
 <p><code>Option&lt;T&gt;</code> type is an implementation of Maybe monad. It has two possible states - default one representing absence of value (<code>None</code>) and the other one representing presence of value (<code>Some</code>). <code>Option&lt;T&gt;</code> wraps value that can be absent, in similar way as <code>Nullable&lt;T&gt;</code> wraps value types. The are core differences though. While <code>Nullable&lt;T&gt;</code> only wraps structs (value types), <code>Option&lt;T&gt;</code> works with all kinds of types, making things more consistent. The value representing absence of data in <code>Nullable&lt;T&gt;</code> is the same as for reference types - both use <code>null</code> for that purpose. With <code>Option&lt;T&gt;</code> you don't really care what is the value representing absence of data, because it's the property of the type itself.</p>
 <h2 id="when-to-use-it">When to use it</h2>
 <p>The main use case of <code>Option</code> type is modeling properties of data structures which are not required to create given structure. Let's say we want to build expense tracking system and need to model Expense enity. To make things simple, we want it to contain 3 properties: category, amount and optional notes. We may start with creating it like this:</p>
