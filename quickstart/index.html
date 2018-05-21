@@ -93,6 +93,10 @@
                     
     <a class="" href="../errors/">ErrorDetails</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../unit/">Unit</a>
+                </li>
     </ul>
 	    </li>
           
@@ -288,7 +292,7 @@ public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes) =&gt;
 </code></pre>
 <p>You can find list of available extensions in the <a href="../apidoc/">API documentation</a>.</p>
 <h2 id="unit-type-representing-no-value"><code>Unit</code> - type representing no value</h2>
-<p>To avoid need to duplicate the APIs for the functions that don't need to return anything (defined as <code>void</code> in C#) Monacs uses <a href="unit.md"><code>Unit</code> type</a>, known from other languages (like F#) and libraries (like Reactive Extensions). <code>Unit</code> Has only one value and it's available as <code>Unit.Default</code> property. You can use it as a substitute for any type whenever you need some, but you don't care about the value, e.g. you can return <code>Task&lt;Unit&gt;</code> (equivalent of non-generic <code>Task</code>) or <code>Func&lt;T&gt;</code> instead of <code>Action</code>. <code>Result&lt;Unit&gt;</code> can be used as a return type for functions with side effects that don't return any value, e.g. saving data to the database. There are some additional extensions provided for <code>Result&lt;Unit&gt;</code> in <code>Monacs.Core.Unit</code> namespace, like the mentioned above <code>Ignore</code> function.</p>
+<p>To avoid need to duplicate the APIs for the functions that don't need to return anything (defined as <code>void</code> in C#) Monacs uses <a href="../unit/"><code>Unit</code> type</a>, known from other languages (like F#) and libraries (like Reactive Extensions). <code>Unit</code> Has only one value and it's available as <code>Unit.Default</code> property. You can use it as a substitute for any type whenever you need some, but you don't care about the value, e.g. you can return <code>Task&lt;Unit&gt;</code> (equivalent of non-generic <code>Task</code>) or <code>Func&lt;T&gt;</code> instead of <code>Action</code>. <code>Result&lt;Unit&gt;</code> can be used as a return type for functions with side effects that don't return any value, e.g. saving data to the database. There are some additional extensions provided for <code>Result&lt;Unit&gt;</code> in <code>Monacs.Core.Unit</code> namespace, like the mentioned above <code>Ignore</code> function.</p>
               
             </div>
           </div>
@@ -323,6 +327,8 @@ public Option&lt;int&gt; GetWordCount(Option&lt;string&gt; notes) =&gt;
 
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/MonacsLib/Monacs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>

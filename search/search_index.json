@@ -106,6 +106,16 @@
             "title": "Monacs.Core.ErrorDetails"
         },
         {
+            "location": "/unit/",
+            "text": "Monacs.Core.Unit\n\n\nTODO",
+            "title": "Unit"
+        },
+        {
+            "location": "/unit/#monacscoreunit",
+            "text": "TODO",
+            "title": "Monacs.Core.Unit"
+        },
+        {
             "location": "/glossary/",
             "text": "Glossary\n\n\nTo fully leverage the potential of this library, you'll need to get familiar with a few simple concepts. Once you get through them, everything about this library should be pretty obvious.\n\n\n(Don't fear the) Monad\n\n\nThe M Word. It's been a topic of countless discussions, jokes and even flamewars. You can look at the monad from many perspectives, but the perspective this library encourages is pretty simple: Monad is a combination of a type (e.g. Option) and a collection of functions around this type (like Map and Bind).\n\n\nActually, as a .NET developer you've probably used at least a couple of monads. \nIEnumerable<T>\n with LINQ is actually a monad. TPL and async/await workflow is a monad as well. And if you had chance to use Reactive Extensions and \nIObservable<T>\n type, then yes, it's a proper monad too.\n\n\nYou may find quite a few similarities between LINQ and what you'll find in this library, although the naming is a bit different. For example, both LINQ and Rx use \nSelect()\n name for the function that makes a projection of an encapsulated value to the value of (potentially) other type. In Monacs you'll find it under the name \nMap()\n, which is quite common across FP languages.\n\n\nHigher order functions\n\n\nThis is another complicated name for a pretty simple concept. Higher order function is just a function which takes another function as a parameter. And again, if you've used LINQ, TPL or Rx you're probably quite familiar with this idea and I think it doesn't require more explanation.\n\n\nValue types\n\n\nAs you may know, there are two kinds of types in C# - reference types, such as \nSystem.Object\n or any class you write, and value types, such as \nSystem.Int32\n or enums. One particular thing that is very often underestimated by developers is the ability to create your own value types - structs. Apart from memory management differences, the key distinction between struct and class is the default value - the problematic null in reference type is substituted by the default value you create when designing a struct. And while you don't want to go and replace all your classes with structs, there are certain places where it can make a huge difference to not have to deal with (implicit) null.\n\n\nThe power of extension methods\n\n\nOne of the most important features of C# that allowed to build this library is extension methods. Having the possibility to extend any type with additional methods from virtually any place gives us the flexibility to build modular fluent APIs around simple types.\n\n\nusing static\n imports\n\n\nThere is one particular feature of C# language that can significantly reduce the amount of code you have to write when you use the same static class multiple times. Take a look at an example:\n\n\nnamespace Monacs.Samples\n{\n    using System;\n\n    public class Sample1\n    {\n        TODO\n    }\n}\n\n\n\nTODO",
             "title": "Glossary"
@@ -142,368 +152,13 @@
         },
         {
             "location": "/apidoc/",
-            "text": "Assembly \nMonacs.Core\n\n\nType \nMonacs.Core.Async.Result\n\n\nContains the set of async extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nIgnoreAsync\n\n\nRejects the value of the \nResult`1\n and returns \nResult`1\n instead.              If the input \nResult`1\n is Error then the error details are preserved.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result of which the value should be ignored.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nFlipAsync\n\n\nTransforms \nResult`1\n with async value inside to \nSystem.Threading.Tasks.Task`1\n of the result,             preserving original result's state and value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\n\n\nMethod \nTryCatchAsync\n\n\nTries to execute \nfunc\n .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nMethod \nTryCatchAsync\n\n\nTries to execute \nfunc\n with the value from the \nresult\n as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.             If the \nresult\n is Error function is not executed and the Error is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the output result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.ErrorDetails\n\n\nRepresents the details of the error in case of failed operation.             To create the instances use the factory methods from the \nErrors\n class.\n\n\nProperties\n\n\nProperty \nLevel\n\n\nContains the error severity described by \nErrorLevel\n .\n\n\nProperty \nMessage\n\n\nContains optional message to describe the error details.\n\n\nProperty \nKey\n\n\nContains optional error key to identify the error.\n\n\nProperty \nException\n\n\nContains optional exception which operation ended up with.             Set to None if no exception occured.\n\n\nProperty \nMetadata\n\n\nContains optional error metadata.\n\n\nType \nMonacs.Core.ErrorLevel\n\n\nRepresents the severity of the error.\n\n\nFields\n\n\nField \nTrace\n\n\nType \nMonacs.Core.Errors\n\n\nContains factory methods to create instances of \nErrorDetails\n in a more convenient way.\n\n\nMethods\n\n\nMethod \nTrace\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Trace\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nDebug\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Debug\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nInfo\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Info\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nWarn\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Warn\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nError\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Error\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nFatal\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Fatal\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Option<T>\n\n\nEncapsulates optional value.             It is recommended to use provided extension methods and not to use properties of the \nOption`1\n directly. \n\n\nThe Option can contain a value of a type \nT\n and it's called Some in such case. \n\n\nIf no value is encapsulated it's called None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of encapsulated value.\n\n\n\n\n\n\n\n\nMethods\n\n\nMethod \nToString\n\n\nCreates a string representation of the \nOption`1\n .\n\n\nMethod \nEquals\n\n\nCompares two instances of the \nOption`1\n .             Two options are equal if both are of the same type, the same case             and the underlying values are equal.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nOption to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares \nOption`1\n with the value of type \nT\n .             Option is equal to the value of the underlying type if it's Some case             and encapsulated value is equal to \nother\n value.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nOption to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares the \nOption`1\n with other object.             Option is only equal to other option given the conditions described in \nOption`1.Equals(Option{`0})\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nobj\n\n\nObject to compare with\n\n\n\n\n\n\n\n\nMethod \nGetHashCode\n\n\nComputes the hashcode for the \nOption`1\n instance.\n\n\nProperties\n\n\nProperty \nValue\n\n\nEncapsulated value. Will be default(T) in None case. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nOption.GetOrDefault``1(Option{``0},``0)\n , \n\n\n\n\n\n\nOption.Map``2(Option{``0},System.Func{``0,``1})\n , \n\n\n\n\n\n\nOption.Bind``2(Option{``0},System.Func{``0,Option{``1}})\n , \n\n\n\n\n\n\nOption.Match``2(Option{``0},System.Func{``0,``1},System.Func{``1})\n\n\n\n\n\n\nProperty \nIsSome\n\n\nReturns true if the option has value (is Some case).\n\n\nProperty \nIsNone\n\n\nReturns true if the option has no value (is None case).\n\n\nType \nMonacs.Core.Option\n\n\nContains the set of extensions to work with the \nOption`1\n type.\n\n\nMethods\n\n\nMethod \nSome\n\n\nCreates the Some case instance of the \nOption`1\n type, encapsulating provided value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to encapsulate.\n\n\n\n\n\n\n\n\nMethod \nNone\n\n\nCreates the None case instance of the \nOption`1\n type, containing no value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nDesired type parameter for  type.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of class T to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfObject``1(``0)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfNullable``1(System.Nullable{``0})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToNullable\n\n\nConverts the value of \nOption`1\n to the \nSystem.Nullable`1\n type.             If the option is the None case, null is yielded.             Otherwise encapsulated value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nOption`1\n type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the string value to the \nOption{string}\n type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfString(System.String)\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfResult\n\n\nConverts the value of \nResult`1\n to the \nOption`1\n type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of \nResult`1\n to the \nOption`1\n type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfResult``1(Result{``0})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nTryGetOption\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Some case of the \nOption`1\n type with the value from the dictionary.             Otherwise returns None case of the \nOption`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\n\n\nMethod \nTryGetOption\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Some case of the \nOption`1\n type with the values from the lookup.             Otherwise returns None case of the \nOption`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\n\n\nMethod \nMatch\n\n\nDoes the pattern matching on the \nOption`1\n type.             If the \noption\n is Some, calls \nsome\n function             with the value from the option as a parameter and returns its result.             Otherwise calls \nnone\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to match on.\n\n\n\n\n\n\nsome\n\n\nFunction called for the Some case.\n\n\n\n\n\n\nnone\n\n\nFunction called for the None case.\n\n\n\n\n\n\n\n\nMethod \nMatchTo\n\n\nDoes the pattern matching on the \nOption`1\n type.             If the \noption\n is Some, returns \nsome\n value.             Otherwise returns \nnone\n value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to match on.\n\n\n\n\n\n\nsome\n\n\nValue returned for the Some case.\n\n\n\n\n\n\nnone\n\n\nValue returned for the None case.\n\n\n\n\n\n\n\n\nMethod \nBind\n\n\nTransforms the \noption\n into another \nOption`1\n using the \nbinder\n function.             If the input option is Some, returns the value of the binder call (which is \nTOut\n option).             Otherwise returns None case of the \nTOut\n option.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input option.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input option value if it's Some case.\n\n\n\n\n\n\n\n\nMethod \nMap\n\n\nMaps the value of the \noption\n into another \nOption`1\n using the \nmapper\n function.             If the input option is Some, returns the Some case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns None case of the \nTOut\n option.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input option.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input option value if it's Some case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value of the \noption\n if it's Some case.             If the option is None case returns value specified by the \nwhenNone\n parameter;             if the parameter is not set returns the default value of the type \nT\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to get a value from.\n\n\n\n\n\n\nwhenNone\n\n\nValue to return if the option is the None case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value from the \noption\n using the \ngetter\n function if it's Some case.             If the option is None case returns value specified by the \nwhenNone\n parameter;             if the parameter is not set returns the default value of the type \nTOut\n .\n\n\nRemarks:\n Effectively the combination of \nOption.Map``2(Option{``0},System.Func{``0,``1})\n and \nOption.GetOrDefault``1(Option{``0},``0)\n calls.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the return value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to get a value from.\n\n\n\n\n\n\ngetter\n\n\nFunction used to get the value if the option is the Some case.\n\n\n\n\n\n\nwhenNone\n\n\nValue to return if the option is the None case.\n\n\n\n\n\n\n\n\nMethod \nDo\n\n\nPerforms the \naction\n with the value of the \noption\n if it's Some case.             If the option is None case nothing happens.             In both cases unmodified option is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the option is Some case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenNone\n\n\nPerforms the \naction\n if the \noption\n is None case.             If the option is Some case nothing happens.             In both cases unmodified option is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the option is None case.\n\n\n\n\n\n\n\n\nMethod \nChoose\n\n\nReturns the collection of values of elements from the \nOption`1\n collection             that are Some case (so contain some value).\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nSequence\n\n\nIf all elements in the input collection are Some case, returns the Some of the collection of underlying values.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to check and map.\n\n\n\n\n\n\n\n\nMethod \nTryFind\n\n\nTries to find the first element of the \nitems\n collection matching the \npredicate\n .             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\npredicate\n\n\nFunction that checks if given element matches desired condition.\n\n\n\n\n\n\n\n\nMethod \nTryFirst\n\n\nTries to get the the element in the \nitems\n collection.             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\n\n\nMethod \nTryElementAt\n\n\nTries to get the element of the \nitems\n collection at the posision given by the \nindex\n parameter.             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\nindex\n\n\nPosition at which to look for an element.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Result<T>\n\n\nRepresents the result of the operation that may succeed or fail.             It is recommended to use provided extension methods and not to use properties of the \nResult`1\n directly. \n\n\nIf the operation succeeded it will contain a value of a type \nT\n and it's called Ok in such case. \n\n\nIf the operation failed it will contain error information of type \nErrorDetails\n and it's called Error.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nExpected return value type.\n\n\n\n\n\n\n\n\nMethods\n\n\nMethod \nToString\n\n\nCreates a string representation of the \nResult`1\n .\n\n\nMethod \nEquals\n\n\nCompares two instances of the \nResult`1\n .             Two results are equal if both are of the same type, the same case             and the underlying values (of errors) are equal.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nResult to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares the \nResult`1\n with other object.             Result is only equal to other result given the conditions described in \nResult`1.Equals(Result{`0})\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nobj\n\n\nObject to compare with\n\n\n\n\n\n\n\n\nMethod \nGetHashCode\n\n\nComputes the hashcode for the \nResult`1\n instance.\n\n\nProperties\n\n\nProperty \nValue\n\n\nContains the computed value of the operation if it ends successfully. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nResult.GetOrDefault``1(Result{``0},``0)\n , \n\n\n\n\n\n\nResult.Map``2(Result{``0},System.Func{``0,``1})\n , \n\n\n\n\n\n\nResult.Bind``2(Result{``0},System.Func{``0,Result{``1}})\n , \n\n\n\n\n\n\nResult.Match``2(Result{``0},System.Func{``0,``1},System.Func{ErrorDetails,``1})\n\n\n\n\n\n\nProperty \nError\n\n\nContains error details when operation ended up with failure. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nResult.Match``2(Result{``0},System.Func{``0,``1},System.Func{ErrorDetails,``1})\n \n\n\n\n\n\n\nResult.DoWhenError``1(Result{``0},System.Action{ErrorDetails})\n\n\n\n\n\n\nProperty \nIsOk\n\n\nIndicates that the Result is on the success path (Ok case).             You should expect the output in the \nResult`1.Value\n field.\n\n\nProperty \nIsError\n\n\nIndicates that the result is on the failure path (Error case).             You should expect error in \nResult`1.Error\n field             and no value in the \nResult`1.Value\n field.\n\n\nType \nMonacs.Core.Result\n\n\nContains the set of extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nOk\n\n\nCreates the Ok case instance of the \nResult`1\n type, encapsulating provided value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to encapsulate.\n\n\n\n\n\n\n\n\nMethod \nError\n\n\nCreates the Error case instance of the \nResult`1\n type, containing error instead of value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nDesired type parameter for  type.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nerror\n\n\nDetails of the error.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfObject``1(``0,ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfObject``1(``0,System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfNullable``1(System.Nullable{``0},ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfNullable``1(System.Nullable{``0},System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfString(System.String,ErrorDetails)\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfString(System.String,System.Func{ErrorDetails})\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nOfOption\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nOfOption\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfOption``1(Option{``0},ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfOption``1(Option{``0},System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Ok case of the \nResult`1\n type with the value from the dictionary.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Ok case of the \nResult`1\n type with the value from the dictionary.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Ok case of the \nResult`1\n type with the values from the lookup.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Ok case of the \nResult`1\n type with the values from the lookup.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nMatch\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchTo\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, returns \nok\n value.             Otherwise returns \nerror\n value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nValue returned for the Ok case.\n\n\n\n\n\n\nerror\n\n\nValue returned for the Error case.\n\n\n\n\n\n\n\n\nMethod \nBind\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMap\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value of the \nresult\n if it's Ok case.             If the result is Error case returns value specified by the \nwhenError\n parameter;             if the parameter is not set returns the default value of the type \nT\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to get a value from.\n\n\n\n\n\n\nwhenError\n\n\nValue to return if the result is the Error case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value from the \nresult\n using the \ngetter\n function if it's Ok case.             If the result is Error case returns value specified by the \nwhenError\n parameter;             if the parameter is not set returns the default value of the type \nTOut\n .\n\n\nRemarks:\n Effectively the combination of \nResult.Map``2(Result{``0},System.Func{``0,``1})\n and \nResult.GetOrDefault``1(Result{``0},``0)\n calls.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the return value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to get a value from.\n\n\n\n\n\n\ngetter\n\n\nFunction used to get the value if the result is the Ok case.\n\n\n\n\n\n\nwhenError\n\n\nValue to return if the result is the Error case.\n\n\n\n\n\n\n\n\nMethod \nDo\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenError\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nChoose\n\n\nReturns the collection of values of elements from the \nResult`1\n collection             that are Ok case.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nChooseErrors\n\n\nReturns the collection of values of elements from the \nResult`1\n collection             that are Error case.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nSequence\n\n\nIf all elements in the input collection are Ok case, returns the Ok of the collection of underlying values.             Otherwise returns Error from the first element.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to check and map.\n\n\n\n\n\n\n\n\nMethod \nTryCatch\n\n\nTries to execute \nfunc\n .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nMethod \nTryCatch\n\n\nTries to execute \nfunc\n with the value from the \nresult\n as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.             If the \nresult\n is Error function is not executed and the Error is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the output result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Unit.Result\n\n\nContains the set of extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nOk\n\n\nCreates the Ok case instance of the \nResult`1\n .\n\n\nMethod \nError\n\n\nCreates the Error case instance of the \nResult`1\n type, containing error instead of value.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nerror\n\n\nDetails of the error.\n\n\n\n\n\n\n\n\nMethod \nIgnore\n\n\nRejects the value of the \nResult`1\n and returns \nResult`1\n instead.              If the input \nResult`1\n is Error then the error details are preserved.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result of which the value should be ignored.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Unit.Unit\n\n\nType that has only one value.              Used to replace void whenever some value is needed, e.g. you can return Task{Unit}.\n\n\nMethods\n\n\nMethod \nEquals\n\n\nUnit.Unit\n is always equal to itself. There is only one possible value of \nUnit.Unit\n .\n\n\nMethod \nEquals\n\n\nUnit.Unit\n is only equal to itself.\n\n\nMethod \nGetHashCode\n\n\nHash Code of \nUnit.Unit\n is always 0.\n\n\nMethod \nToString\n\n\nString representation of \nUnit.Unit\n is ().\n\n\nMethod \nop_Equality\n\n\nUnit.Unit\n is always equal to itself.\n\n\nMethod \nop_Inequality\n\n\nUnit.Unit\n is always equal to itself.\n\n\nProperties\n\n\nProperty \nDefault\n\n\nThe only value of \nUnit.Unit\n .",
+            "text": "Assembly \nMonacs.Core\n\n\nType \nMonacs.Core.ErrorDetails\n\n\nRepresents the details of the error in case of failed operation.             To create the instances use the factory methods from the \nErrors\n class.\n\n\nProperties\n\n\nProperty \nLevel\n\n\nContains the error severity described by \nErrorLevel\n .\n\n\nProperty \nMessage\n\n\nContains optional message to describe the error details.\n\n\nProperty \nKey\n\n\nContains optional error key to identify the error.\n\n\nProperty \nException\n\n\nContains optional exception which operation ended up with.             Set to None if no exception occured.\n\n\nProperty \nMetadata\n\n\nContains optional error metadata.\n\n\nType \nMonacs.Core.ErrorLevel\n\n\nRepresents the severity of the error.\n\n\nType \nMonacs.Core.Errors\n\n\nContains factory methods to create instances of \nErrorDetails\n in a more convenient way.\n\n\nMethods\n\n\nMethod \nTrace\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Trace\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nDebug\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Debug\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nInfo\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Info\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nWarn\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Warn\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nError\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Error\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nMethod \nFatal\n\n\nCreates \nErrorDetails\n with level \nErrorLevel.Fatal\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nmessage\n\n\nOptional error message\n\n\n\n\n\n\nkey\n\n\nOptional key to identify the error\n\n\n\n\n\n\nexception\n\n\nOptional exception which caused the error\n\n\n\n\n\n\nmetadata\n\n\nOptional error metadata\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Option<T>\n\n\nEncapsulates optional value.             It is recommended to use provided extension methods and not to use properties of the \nOption`1\n directly. \n\n\nThe Option can contain a value of a type \nT\n and it's called Some in such case. \n\n\nIf no value is encapsulated it's called None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of encapsulated value.\n\n\n\n\n\n\n\n\nMethods\n\n\nMethod \nToString\n\n\nCreates a string representation of the \nOption`1\n .\n\n\nMethod \nEquals\n\n\nCompares two instances of the \nOption`1\n .             Two options are equal if both are of the same type, the same case             and the underlying values are equal.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nOption to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares \nOption`1\n with the value of type \nT\n .             Option is equal to the value of the underlying type if it's Some case             and encapsulated value is equal to \nother\n value.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nOption to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares the \nOption`1\n with other object.             Option is only equal to other option given the conditions described in \nOption`1.Equals(Option{`0})\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nobj\n\n\nObject to compare with\n\n\n\n\n\n\n\n\nMethod \nGetHashCode\n\n\nComputes the hashcode for the \nOption`1\n instance.\n\n\nProperties\n\n\nProperty \nValue\n\n\nEncapsulated value. Will be default(T) in None case. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nOption.GetOrDefault``1(Option{``0},``0)\n , \n\n\n\n\n\n\nOption.Map``2(Option{``0},System.Func{``0,``1})\n , \n\n\n\n\n\n\nOption.Bind``2(Option{``0},System.Func{``0,Option{``1}})\n , \n\n\n\n\n\n\nOption.Match``2(Option{``0},System.Func{``0,``1},System.Func{``1})\n\n\n\n\n\n\nProperty \nIsSome\n\n\nReturns true if the option has value (is Some case).\n\n\nProperty \nIsNone\n\n\nReturns true if the option has no value (is None case).\n\n\nType \nMonacs.Core.Option\n\n\nContains the set of extensions to work with the \nOption`1\n type.\n\n\nMethods\n\n\nMethod \nSome\n\n\nCreates the Some case instance of the \nOption`1\n type, encapsulating provided value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to encapsulate.\n\n\n\n\n\n\n\n\nMethod \nNone\n\n\nCreates the None case instance of the \nOption`1\n type, containing no value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nDesired type parameter for  type.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of class T to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfObject``1(``0)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nOption`1\n type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfNullable``1(System.Nullable{``0})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToNullable\n\n\nConverts the value of \nOption`1\n to the \nSystem.Nullable`1\n type.             If the option is the None case, null is yielded.             Otherwise encapsulated value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nOption`1\n type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the string value to the \nOption{string}\n type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfString(System.String)\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nOfResult\n\n\nConverts the value of \nResult`1\n to the \nOption`1\n type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nToOption\n\n\nConverts the value of \nResult`1\n to the \nOption`1\n type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.\n\n\nRemarks:\n Extension method variant of \nOption.OfResult``1(Result{``0})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\n\n\nMethod \nTryGetOption\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Some case of the \nOption`1\n type with the value from the dictionary.             Otherwise returns None case of the \nOption`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\n\n\nMethod \nTryGetOption\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Some case of the \nOption`1\n type with the values from the lookup.             Otherwise returns None case of the \nOption`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\n\n\nMethod \nMatch\n\n\nDoes the pattern matching on the \nOption`1\n type.             If the \noption\n is Some, calls \nsome\n function             with the value from the option as a parameter and returns its result.             Otherwise calls \nnone\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to match on.\n\n\n\n\n\n\nsome\n\n\nFunction called for the Some case.\n\n\n\n\n\n\nnone\n\n\nFunction called for the None case.\n\n\n\n\n\n\n\n\nMethod \nMatchTo\n\n\nDoes the pattern matching on the \nOption`1\n type.             If the \noption\n is Some, returns \nsome\n value.             Otherwise returns \nnone\n value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to match on.\n\n\n\n\n\n\nsome\n\n\nValue returned for the Some case.\n\n\n\n\n\n\nnone\n\n\nValue returned for the None case.\n\n\n\n\n\n\n\n\nMethod \nBind\n\n\nTransforms the \noption\n into another \nOption`1\n using the \nbinder\n function.             If the input option is Some, returns the value of the binder call (which is \nTOut\n option).             Otherwise returns None case of the \nTOut\n option.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input option.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input option value if it's Some case.\n\n\n\n\n\n\n\n\nMethod \nMap\n\n\nMaps the value of the \noption\n into another \nOption`1\n using the \nmapper\n function.             If the input option is Some, returns the Some case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns None case of the \nTOut\n option.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input option.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input option value if it's Some case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value of the \noption\n if it's Some case.             If the option is None case returns value specified by the \nwhenNone\n parameter;             if the parameter is not set returns the default value of the type \nT\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to get a value from.\n\n\n\n\n\n\nwhenNone\n\n\nValue to return if the option is the None case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value from the \noption\n using the \ngetter\n function if it's Some case.             If the option is None case returns value specified by the \nwhenNone\n parameter;             if the parameter is not set returns the default value of the type \nTOut\n .\n\n\nRemarks:\n Effectively the combination of \nOption.Map``2(Option{``0},System.Func{``0,``1})\n and \nOption.GetOrDefault``1(Option{``0},``0)\n calls.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the option.\n\n\n\n\n\n\nTOut\n\n\nType of the return value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to get a value from.\n\n\n\n\n\n\ngetter\n\n\nFunction used to get the value if the option is the Some case.\n\n\n\n\n\n\nwhenNone\n\n\nValue to return if the option is the None case.\n\n\n\n\n\n\n\n\nMethod \nDo\n\n\nPerforms the \naction\n with the value of the \noption\n if it's Some case.             If the option is None case nothing happens.             In both cases unmodified option is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the option is Some case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenNone\n\n\nPerforms the \naction\n if the \noption\n is None case.             If the option is Some case nothing happens.             In both cases unmodified option is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\noption\n\n\nThe option to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the option is None case.\n\n\n\n\n\n\n\n\nMethod \nChoose\n\n\nReturns the collection of values of elements from the \nOption`1\n collection             that are Some case (so contain some value).\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nSequence\n\n\nIf all elements in the input collection are Some case, returns the Some of the collection of underlying values.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to check and map.\n\n\n\n\n\n\n\n\nMethod \nTryFind\n\n\nTries to find the first element of the \nitems\n collection matching the \npredicate\n .             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\npredicate\n\n\nFunction that checks if given element matches desired condition.\n\n\n\n\n\n\n\n\nMethod \nTryFirst\n\n\nTries to get the the element in the \nitems\n collection.             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and the returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\n\n\nMethod \nTryElementAt\n\n\nTries to get the element of the \nitems\n collection at the posision given by the \nindex\n parameter.             If element is found, returns Some with the value of that element.             Otherwise returns None.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the collection and returned option.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to search in.\n\n\n\n\n\n\nindex\n\n\nPosition at which to look for an element.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Result<T>\n\n\nRepresents the result of the operation that may succeed or fail.             It is recommended to use provided extension methods and not to use properties of the \nResult`1\n directly. \n\n\nIf the operation succeeded it will contain a value of a type \nT\n and it's called Ok in such case. \n\n\nIf the operation failed it will contain error information of type \nErrorDetails\n and it's called Error.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nExpected return value type.\n\n\n\n\n\n\n\n\nMethods\n\n\nMethod \nToString\n\n\nCreates a string representation of the \nResult`1\n .\n\n\nMethod \nEquals\n\n\nCompares two instances of the \nResult`1\n .             Two results are equal if both are of the same type, the same case             and the underlying values (of errors) are equal.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nother\n\n\nResult to compare with\n\n\n\n\n\n\n\n\nMethod \nEquals\n\n\nCompares the \nResult`1\n with other object.             Result is only equal to other result given the conditions described in \nResult`1.Equals(Result{`0})\n .\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nobj\n\n\nObject to compare with\n\n\n\n\n\n\n\n\nMethod \nGetHashCode\n\n\nComputes the hashcode for the \nResult`1\n instance.\n\n\nProperties\n\n\nProperty \nValue\n\n\nContains the computed value of the operation if it ends successfully. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nResult.GetOrDefault``1(Result{``0},``0)\n , \n\n\n\n\n\n\nResult.Map``2(Result{``0},System.Func{``0,``1})\n , \n\n\n\n\n\n\nResult.Bind``2(Result{``0},System.Func{``0,Result{``1}})\n , \n\n\n\n\n\n\nResult.Match``2(Result{``0},System.Func{``0,``1},System.Func{ErrorDetails,``1})\n\n\n\n\n\n\nProperty \nError\n\n\nContains error details when operation ended up with failure. \n\n\nIt is not recommended to use it directly. \n\n\nUse extension methods to access the value instead, like: \n\n\n\n\n\n\nResult.Match``2(Result{``0},System.Func{``0,``1},System.Func{ErrorDetails,``1})\n \n\n\n\n\n\n\nResult.DoWhenError``1(Result{``0},System.Action{ErrorDetails})\n\n\n\n\n\n\nProperty \nIsOk\n\n\nIndicates that the Result is on the success path (Ok case).             You should expect the output in the \nResult`1.Value\n field.\n\n\nProperty \nIsError\n\n\nIndicates that the result is on the failure path (Error case).             You should expect error in \nResult`1.Error\n field             and no value in the \nResult`1.Value\n field.\n\n\nType \nMonacs.Core.AsyncResult\n\n\nContains the set of async extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nBindAsync\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMapAsync\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchAsync\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nIgnoreAsync\n\n\nRejects the value of the \nResult`1\n and returns \nResult`1\n instead.              If the input \nResult`1\n is Error then the error details are preserved.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result of which the value should be ignored.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoAsync\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenErrorAsync\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nFlipAsync\n\n\nTransforms \nResult`1\n with async value inside to \nSystem.Threading.Tasks.Task`1\n of the result,             preserving original result's state and value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\n\n\nMethod \nTryCatchAsync\n\n\nTries to execute \nfunc\n .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nMethod \nTryCatchAsync\n\n\nTries to execute \nfunc\n with the value from the \nresult\n as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.             If the \nresult\n is Error function is not executed and the Error is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the output result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Result\n\n\nContains the set of extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nOk\n\n\nCreates the Ok case instance of the \nResult`1\n type, encapsulating provided value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to encapsulate.\n\n\n\n\n\n\n\n\nMethod \nError\n\n\nCreates the Error case instance of the \nResult`1\n type, containing error instead of value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nDesired type parameter for  type.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nerror\n\n\nDetails of the error.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfObject\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfObject``1(``0,ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of class T to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfObject``1(``0,System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfNullable\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfNullable``1(System.Nullable{``0},ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nSystem.Nullable`1\n to the \nResult`1\n type.             If the value is null, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfNullable``1(System.Nullable{``0},System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null.\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nOfString\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfString(System.String,ErrorDetails)\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the string value to the \nResult`1\n type.             If the value is null or empty string, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfString(System.String,System.Func{ErrorDetails})\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is null or empty.\n\n\n\n\n\n\n\n\nMethod \nOfOption\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nOfOption\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfOption``1(Option{``0},ErrorDetails)\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nToResult\n\n\nConverts the value of \nOption`1\n to the \nResult`1\n type.             If the value is None case, the Error case is yielded.             Otherwise Ok case with provided value is returned.\n\n\nRemarks:\n Extension method variant of \nResult.OfOption``1(Option{``0},System.Func{ErrorDetails})\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nvalue\n\n\nThe value to convert to .\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the value is None.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Ok case of the \nResult`1\n type with the value from the dictionary.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the element with the given \nkey\n from the \ndictionary\n .             If the value is found, returns Ok case of the \nResult`1\n type with the value from the dictionary.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the dictionary.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the dictionary.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\ndictionary\n\n\nThe dictionary to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Ok case of the \nResult`1\n type with the values from the lookup.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerror\n\n\nDetails of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nTryGetResult\n\n\nTries to get the elements with the given \nkey\n from the \nlookup\n .             If any value is found, returns Ok case of the \nResult`1\n type with the values from the lookup.             Otherwise returns Error case of the \nResult`1\n type.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTKey\n\n\nType of the key in the lookup.\n\n\n\n\n\n\nTValue\n\n\nType of the value in the lookup.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nlookup\n\n\nThe lookup to search in.\n\n\n\n\n\n\nkey\n\n\nThe key to look for.\n\n\n\n\n\n\nerrorFunc\n\n\nFunction yielding details of the error if the key is not found.\n\n\n\n\n\n\n\n\nMethod \nMatch\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, calls \nok\n function             with the value from the result as a parameter and returns its result.             Otherwise calls \nerror\n function and returns its result.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nFunction called for the Ok case.\n\n\n\n\n\n\nerror\n\n\nFunction called for the Error case.\n\n\n\n\n\n\n\n\nMethod \nMatchTo\n\n\nDoes the pattern matching on the \nResult`1\n type.             If the \nresult\n is Ok, returns \nok\n value.             Otherwise returns \nerror\n value.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the returned value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to match on.\n\n\n\n\n\n\nok\n\n\nValue returned for the Ok case.\n\n\n\n\n\n\nerror\n\n\nValue returned for the Error case.\n\n\n\n\n\n\n\n\nMethod \nBind\n\n\nTransforms the \nresult\n into another \nResult`1\n using the \nbinder\n function.             If the input result is Ok, returns the value of the binder call (which is \nResult`1\n of \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to bind with.\n\n\n\n\n\n\nbinder\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nMap\n\n\nMaps the value of the \nresult\n into another \nResult`1\n using the \nmapper\n function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is \nTOut\n ).             Otherwise returns Error case of the Result of \nTOut\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the returned result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to map on.\n\n\n\n\n\n\nmapper\n\n\nFunction called with the input result value if it's Ok case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value of the \nresult\n if it's Ok case.             If the result is Error case returns value specified by the \nwhenError\n parameter;             if the parameter is not set returns the default value of the type \nT\n .\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to get a value from.\n\n\n\n\n\n\nwhenError\n\n\nValue to return if the result is the Error case.\n\n\n\n\n\n\n\n\nMethod \nGetOrDefault\n\n\nGets the value from the \nresult\n using the \ngetter\n function if it's Ok case.             If the result is Error case returns value specified by the \nwhenError\n parameter;             if the parameter is not set returns the default value of the type \nTOut\n .\n\n\nRemarks:\n Effectively the combination of \nResult.Map``2(Result{``0},System.Func{``0,``1})\n and \nResult.GetOrDefault``1(Result{``0},``0)\n calls.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the result.\n\n\n\n\n\n\nTOut\n\n\nType of the return value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to get a value from.\n\n\n\n\n\n\ngetter\n\n\nFunction used to get the value if the result is the Ok case.\n\n\n\n\n\n\nwhenError\n\n\nValue to return if the result is the Error case.\n\n\n\n\n\n\n\n\nMethod \nDo\n\n\nPerforms the \naction\n with the value of the \nresult\n if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Ok case.\n\n\n\n\n\n\n\n\nMethod \nDoWhenError\n\n\nPerforms the \naction\n if the \nresult\n is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result to check for a value.\n\n\n\n\n\n\naction\n\n\nFunction executed if the result is Error case.\n\n\n\n\n\n\n\n\nMethod \nChoose\n\n\nReturns the collection of values of elements from the \nResult`1\n collection             that are Ok case.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nChooseErrors\n\n\nReturns the collection of values of elements from the \nResult`1\n collection             that are Error case.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to filter out and map.\n\n\n\n\n\n\n\n\nMethod \nSequence\n\n\nIf all elements in the input collection are Ok case, returns the Ok of the collection of underlying values.             Otherwise returns Error from the first element.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nitems\n\n\nCollection to check and map.\n\n\n\n\n\n\n\n\nMethod \nTryCatch\n\n\nTries to execute \nfunc\n .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the value in the result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nMethod \nTryCatch\n\n\nTries to execute \nfunc\n with the value from the \nresult\n as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by \nerrorHandler\n based on the thrown exception.             If the \nresult\n is Error function is not executed and the Error is returned.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nTIn\n\n\nType of the value in the input result.\n\n\n\n\n\n\nTOut\n\n\nType of the value in the output result.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nResult to take the value from.\n\n\n\n\n\n\nfunc\n\n\nFunction to execute.\n\n\n\n\n\n\nerrorHandler\n\n\nFunction that generates error details in case of exception.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Unit.UnitResult\n\n\nContains the set of extensions to work with the \nResult`1\n type.\n\n\nMethods\n\n\nMethod \nOk\n\n\nCreates the Ok case instance of the \nResult`1\n .\n\n\nMethod \nError\n\n\nCreates the Error case instance of the \nResult`1\n type, containing error instead of value.\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nerror\n\n\nDetails of the error.\n\n\n\n\n\n\n\n\nMethod \nIgnore\n\n\nRejects the value of the \nResult`1\n and returns \nResult`1\n instead.              If the input \nResult`1\n is Error then the error details are preserved.\n\n\nGeneric parameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nT\n\n\nType of the encapsulated value.\n\n\n\n\n\n\n\n\nParameters\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nresult\n\n\nThe result of which the value should be ignored.\n\n\n\n\n\n\n\n\nType \nMonacs.Core.Unit.Unit\n\n\nType that has only one value.              Used to replace void whenever some value is needed, e.g. you can return Task{Unit}.\n\n\nMethods\n\n\nMethod \nEquals\n\n\nUnit.Unit\n is always equal to itself. There is only one possible value of \nUnit.Unit\n .\n\n\nMethod \nEquals\n\n\nUnit.Unit\n is only equal to itself.\n\n\nMethod \nGetHashCode\n\n\nHash Code of \nUnit.Unit\n is always 0.\n\n\nMethod \nToString\n\n\nString representation of \nUnit.Unit\n is ().\n\n\nMethod \nop_Equality\n\n\nUnit.Unit\n is always equal to itself.\n\n\nMethod \nop_Inequality\n\n\nUnit.Unit\n is always equal to itself.\n\n\nProperties\n\n\nProperty \nDefault\n\n\nThe only value of \nUnit.Unit\n .",
             "title": "API docs"
         },
         {
             "location": "/apidoc/#assembly-monacscore",
             "text": "",
             "title": "Assembly Monacs.Core"
-        },
-        {
-            "location": "/apidoc/#type-monacscoreasyncresult",
-            "text": "Contains the set of async extensions to work with the  Result`1  type.",
-            "title": "Type Monacs.Core.Async.Result"
-        },
-        {
-            "location": "/apidoc/#methods",
-            "text": "",
-            "title": "Methods"
-        },
-        {
-            "location": "/apidoc/#method-bindasync",
-            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method BindAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters",
-            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-bindasync_1",
-            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method BindAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_1",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_1",
-            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-bindasync_2",
-            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method BindAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_2",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_2",
-            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-mapasync",
-            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method MapAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_3",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_3",
-            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-mapasync_1",
-            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method MapAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_4",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_4",
-            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-mapasync_2",
-            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
-            "title": "Method MapAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_5",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_5",
-            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_6",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_6",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_1",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_7",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_7",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_2",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_8",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_8",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_3",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_9",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_9",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_4",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_10",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_10",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_5",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_11",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_11",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-matchasync_6",
-            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
-            "title": "Method MatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_12",
-            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_12",
-            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-ignoreasync",
-            "text": "Rejects the value of the  Result`1  and returns  Result`1  instead.              If the input  Result`1  is Error then the error details are preserved.",
-            "title": "Method IgnoreAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_13",
-            "text": "Name  Description      T  Type of the encapsulated value.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_13",
-            "text": "Name  Description      result  The result of which the value should be ignored.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-doasync",
-            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_14",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_14",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-doasync_1",
-            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_15",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_15",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-doasync_2",
-            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_16",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_16",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-dowhenerrorasync",
-            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoWhenErrorAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_17",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_17",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-dowhenerrorasync_1",
-            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoWhenErrorAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_18",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_18",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-dowhenerrorasync_2",
-            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
-            "title": "Method DoWhenErrorAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_19",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_19",
-            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-flipasync",
-            "text": "Transforms  Result`1  with async value inside to  System.Threading.Tasks.Task`1  of the result,             preserving original result's state and value.",
-            "title": "Method FlipAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_20",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_20",
-            "text": "Name  Description      result  Result to take the value from.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-trycatchasync",
-            "text": "Tries to execute  func  .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by  errorHandler  based on the thrown exception.",
-            "title": "Method TryCatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_21",
-            "text": "Name  Description      T  Type of the value in the result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_21",
-            "text": "Name  Description      func  Function to execute.    errorHandler  Function that generates error details in case of exception.",
-            "title": "Parameters"
-        },
-        {
-            "location": "/apidoc/#method-trycatchasync_1",
-            "text": "Tries to execute  func  with the value from the  result  as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by  errorHandler  based on the thrown exception.             If the  result  is Error function is not executed and the Error is returned.",
-            "title": "Method TryCatchAsync"
-        },
-        {
-            "location": "/apidoc/#generic-parameters_22",
-            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the output result.",
-            "title": "Generic parameters"
-        },
-        {
-            "location": "/apidoc/#parameters_22",
-            "text": "Name  Description      result  Result to take the value from.    func  Function to execute.    errorHandler  Function that generates error details in case of exception.",
-            "title": "Parameters"
         },
         {
             "location": "/apidoc/#type-monacscoreerrordetails",
@@ -546,22 +201,12 @@
             "title": "Type Monacs.Core.ErrorLevel"
         },
         {
-            "location": "/apidoc/#fields",
-            "text": "",
-            "title": "Fields"
-        },
-        {
-            "location": "/apidoc/#field-trace",
-            "text": "",
-            "title": "Field Trace"
-        },
-        {
             "location": "/apidoc/#type-monacscoreerrors",
             "text": "Contains factory methods to create instances of  ErrorDetails  in a more convenient way.",
             "title": "Type Monacs.Core.Errors"
         },
         {
-            "location": "/apidoc/#methods_1",
+            "location": "/apidoc/#methods",
             "text": "",
             "title": "Methods"
         },
@@ -571,7 +216,7 @@
             "title": "Method Trace"
         },
         {
-            "location": "/apidoc/#parameters_23",
+            "location": "/apidoc/#parameters",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -581,7 +226,7 @@
             "title": "Method Debug"
         },
         {
-            "location": "/apidoc/#parameters_24",
+            "location": "/apidoc/#parameters_1",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -591,7 +236,7 @@
             "title": "Method Info"
         },
         {
-            "location": "/apidoc/#parameters_25",
+            "location": "/apidoc/#parameters_2",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -601,7 +246,7 @@
             "title": "Method Warn"
         },
         {
-            "location": "/apidoc/#parameters_26",
+            "location": "/apidoc/#parameters_3",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -611,7 +256,7 @@
             "title": "Method Error"
         },
         {
-            "location": "/apidoc/#parameters_27",
+            "location": "/apidoc/#parameters_4",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -621,7 +266,7 @@
             "title": "Method Fatal"
         },
         {
-            "location": "/apidoc/#parameters_28",
+            "location": "/apidoc/#parameters_5",
             "text": "Name  Description      message  Optional error message    key  Optional key to identify the error    exception  Optional exception which caused the error    metadata  Optional error metadata",
             "title": "Parameters"
         },
@@ -631,12 +276,12 @@
             "title": "Type Monacs.Core.Option&lt;T&gt;"
         },
         {
-            "location": "/apidoc/#generic-parameters_23",
+            "location": "/apidoc/#generic-parameters",
             "text": "Name  Description      T  Type of encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#methods_2",
+            "location": "/apidoc/#methods_1",
             "text": "",
             "title": "Methods"
         },
@@ -651,7 +296,7 @@
             "title": "Method Equals"
         },
         {
-            "location": "/apidoc/#parameters_29",
+            "location": "/apidoc/#parameters_6",
             "text": "Name  Description      other  Option to compare with",
             "title": "Parameters"
         },
@@ -661,7 +306,7 @@
             "title": "Method Equals"
         },
         {
-            "location": "/apidoc/#parameters_30",
+            "location": "/apidoc/#parameters_7",
             "text": "Name  Description      other  Option to compare with",
             "title": "Parameters"
         },
@@ -671,7 +316,7 @@
             "title": "Method Equals"
         },
         {
-            "location": "/apidoc/#parameters_31",
+            "location": "/apidoc/#parameters_8",
             "text": "Name  Description      obj  Object to compare with",
             "title": "Parameters"
         },
@@ -706,7 +351,7 @@
             "title": "Type Monacs.Core.Option"
         },
         {
-            "location": "/apidoc/#methods_3",
+            "location": "/apidoc/#methods_2",
             "text": "",
             "title": "Methods"
         },
@@ -716,12 +361,12 @@
             "title": "Method Some"
         },
         {
-            "location": "/apidoc/#generic-parameters_24",
+            "location": "/apidoc/#generic-parameters_1",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_32",
+            "location": "/apidoc/#parameters_9",
             "text": "Name  Description      value  The value to encapsulate.",
             "title": "Parameters"
         },
@@ -731,7 +376,7 @@
             "title": "Method None"
         },
         {
-            "location": "/apidoc/#generic-parameters_25",
+            "location": "/apidoc/#generic-parameters_2",
             "text": "Name  Description      T  Desired type parameter for  type.",
             "title": "Generic parameters"
         },
@@ -741,12 +386,12 @@
             "title": "Method OfObject"
         },
         {
-            "location": "/apidoc/#generic-parameters_26",
+            "location": "/apidoc/#generic-parameters_3",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_33",
+            "location": "/apidoc/#parameters_10",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -756,12 +401,12 @@
             "title": "Method ToOption"
         },
         {
-            "location": "/apidoc/#generic-parameters_27",
+            "location": "/apidoc/#generic-parameters_4",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_34",
+            "location": "/apidoc/#parameters_11",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -771,12 +416,12 @@
             "title": "Method OfNullable"
         },
         {
-            "location": "/apidoc/#generic-parameters_28",
+            "location": "/apidoc/#generic-parameters_5",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_35",
+            "location": "/apidoc/#parameters_12",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -786,12 +431,12 @@
             "title": "Method ToOption"
         },
         {
-            "location": "/apidoc/#generic-parameters_29",
+            "location": "/apidoc/#generic-parameters_6",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_36",
+            "location": "/apidoc/#parameters_13",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -801,12 +446,12 @@
             "title": "Method ToNullable"
         },
         {
-            "location": "/apidoc/#generic-parameters_30",
+            "location": "/apidoc/#generic-parameters_7",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_37",
+            "location": "/apidoc/#parameters_14",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -816,7 +461,7 @@
             "title": "Method OfString"
         },
         {
-            "location": "/apidoc/#parameters_38",
+            "location": "/apidoc/#parameters_15",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -826,7 +471,7 @@
             "title": "Method ToOption"
         },
         {
-            "location": "/apidoc/#parameters_39",
+            "location": "/apidoc/#parameters_16",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -836,12 +481,12 @@
             "title": "Method OfResult"
         },
         {
-            "location": "/apidoc/#generic-parameters_31",
+            "location": "/apidoc/#generic-parameters_8",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_40",
+            "location": "/apidoc/#parameters_17",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -851,12 +496,12 @@
             "title": "Method ToOption"
         },
         {
-            "location": "/apidoc/#generic-parameters_32",
+            "location": "/apidoc/#generic-parameters_9",
             "text": "Name  Description      T  Type of the encapsulated value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_41",
+            "location": "/apidoc/#parameters_18",
             "text": "Name  Description      value  The value to convert to .",
             "title": "Parameters"
         },
@@ -866,12 +511,12 @@
             "title": "Method TryGetOption"
         },
         {
-            "location": "/apidoc/#generic-parameters_33",
+            "location": "/apidoc/#generic-parameters_10",
             "text": "Name  Description      TKey  Type of the key in the dictionary.    TValue  Type of the value in the dictionary.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_42",
+            "location": "/apidoc/#parameters_19",
             "text": "Name  Description      dictionary  The dictionary to search in.    key  The key to look for.",
             "title": "Parameters"
         },
@@ -881,12 +526,12 @@
             "title": "Method TryGetOption"
         },
         {
-            "location": "/apidoc/#generic-parameters_34",
+            "location": "/apidoc/#generic-parameters_11",
             "text": "Name  Description      TKey  Type of the key in the lookup.    TValue  Type of the value in the lookup.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_43",
+            "location": "/apidoc/#parameters_20",
             "text": "Name  Description      lookup  The lookup to search in.    key  The key to look for.",
             "title": "Parameters"
         },
@@ -896,12 +541,12 @@
             "title": "Method Match"
         },
         {
-            "location": "/apidoc/#generic-parameters_35",
+            "location": "/apidoc/#generic-parameters_12",
             "text": "Name  Description      TIn  Type of the value in the option.    TOut  Type of the returned value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_44",
+            "location": "/apidoc/#parameters_21",
             "text": "Name  Description      option  The option to match on.    some  Function called for the Some case.    none  Function called for the None case.",
             "title": "Parameters"
         },
@@ -911,12 +556,12 @@
             "title": "Method MatchTo"
         },
         {
-            "location": "/apidoc/#generic-parameters_36",
+            "location": "/apidoc/#generic-parameters_13",
             "text": "Name  Description      TIn  Type of the value in the option.    TOut  Type of the returned value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_45",
+            "location": "/apidoc/#parameters_22",
             "text": "Name  Description      option  The option to match on.    some  Value returned for the Some case.    none  Value returned for the None case.",
             "title": "Parameters"
         },
@@ -926,12 +571,12 @@
             "title": "Method Bind"
         },
         {
-            "location": "/apidoc/#generic-parameters_37",
+            "location": "/apidoc/#generic-parameters_14",
             "text": "Name  Description      TIn  Type of the value in the input option.    TOut  Type of the value in the returned option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_46",
+            "location": "/apidoc/#parameters_23",
             "text": "Name  Description      option  The option to bind with.    binder  Function called with the input option value if it's Some case.",
             "title": "Parameters"
         },
@@ -941,12 +586,12 @@
             "title": "Method Map"
         },
         {
-            "location": "/apidoc/#generic-parameters_38",
+            "location": "/apidoc/#generic-parameters_15",
             "text": "Name  Description      TIn  Type of the value in the input option.    TOut  Type of the value in the returned option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_47",
+            "location": "/apidoc/#parameters_24",
             "text": "Name  Description      option  The option to map on.    mapper  Function called with the input option value if it's Some case.",
             "title": "Parameters"
         },
@@ -956,12 +601,12 @@
             "title": "Method GetOrDefault"
         },
         {
-            "location": "/apidoc/#generic-parameters_39",
+            "location": "/apidoc/#generic-parameters_16",
             "text": "Name  Description      T  Type of the value in the option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_48",
+            "location": "/apidoc/#parameters_25",
             "text": "Name  Description      option  The option to get a value from.    whenNone  Value to return if the option is the None case.",
             "title": "Parameters"
         },
@@ -971,12 +616,12 @@
             "title": "Method GetOrDefault"
         },
         {
-            "location": "/apidoc/#generic-parameters_40",
+            "location": "/apidoc/#generic-parameters_17",
             "text": "Name  Description      TIn  Type of the value in the option.    TOut  Type of the return value.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_49",
+            "location": "/apidoc/#parameters_26",
             "text": "Name  Description      option  The option to get a value from.    getter  Function used to get the value if the option is the Some case.    whenNone  Value to return if the option is the None case.",
             "title": "Parameters"
         },
@@ -986,12 +631,12 @@
             "title": "Method Do"
         },
         {
-            "location": "/apidoc/#generic-parameters_41",
+            "location": "/apidoc/#generic-parameters_18",
             "text": "Name  Description      T  Type of the value in the option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_50",
+            "location": "/apidoc/#parameters_27",
             "text": "Name  Description      option  The option to check for a value.    action  Function executed if the option is Some case.",
             "title": "Parameters"
         },
@@ -1001,12 +646,12 @@
             "title": "Method DoWhenNone"
         },
         {
-            "location": "/apidoc/#generic-parameters_42",
+            "location": "/apidoc/#generic-parameters_19",
             "text": "Name  Description      T  Type of the value in the option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_51",
+            "location": "/apidoc/#parameters_28",
             "text": "Name  Description      option  The option to check for a value.    action  Function executed if the option is None case.",
             "title": "Parameters"
         },
@@ -1016,12 +661,12 @@
             "title": "Method Choose"
         },
         {
-            "location": "/apidoc/#generic-parameters_43",
+            "location": "/apidoc/#generic-parameters_20",
             "text": "Name  Description      T  Type of the value in the option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_52",
+            "location": "/apidoc/#parameters_29",
             "text": "Name  Description      items  Collection to filter out and map.",
             "title": "Parameters"
         },
@@ -1031,12 +676,12 @@
             "title": "Method Sequence"
         },
         {
-            "location": "/apidoc/#generic-parameters_44",
+            "location": "/apidoc/#generic-parameters_21",
             "text": "Name  Description      T  Type of the value in the option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_53",
+            "location": "/apidoc/#parameters_30",
             "text": "Name  Description      items  Collection to check and map.",
             "title": "Parameters"
         },
@@ -1046,12 +691,12 @@
             "title": "Method TryFind"
         },
         {
-            "location": "/apidoc/#generic-parameters_45",
+            "location": "/apidoc/#generic-parameters_22",
             "text": "Name  Description      T  Type of the value in the collection and returned option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_54",
+            "location": "/apidoc/#parameters_31",
             "text": "Name  Description      items  Collection to search in.    predicate  Function that checks if given element matches desired condition.",
             "title": "Parameters"
         },
@@ -1061,12 +706,12 @@
             "title": "Method TryFirst"
         },
         {
-            "location": "/apidoc/#generic-parameters_46",
+            "location": "/apidoc/#generic-parameters_23",
             "text": "Name  Description      T  Type of the value in the collection and the returned option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_55",
+            "location": "/apidoc/#parameters_32",
             "text": "Name  Description      items  Collection to search in.",
             "title": "Parameters"
         },
@@ -1076,12 +721,12 @@
             "title": "Method TryElementAt"
         },
         {
-            "location": "/apidoc/#generic-parameters_47",
+            "location": "/apidoc/#generic-parameters_24",
             "text": "Name  Description      T  Type of the value in the collection and returned option.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#parameters_56",
+            "location": "/apidoc/#parameters_33",
             "text": "Name  Description      items  Collection to search in.    index  Position at which to look for an element.",
             "title": "Parameters"
         },
@@ -1091,12 +736,12 @@
             "title": "Type Monacs.Core.Result&lt;T&gt;"
         },
         {
-            "location": "/apidoc/#generic-parameters_48",
+            "location": "/apidoc/#generic-parameters_25",
             "text": "Name  Description      T  Expected return value type.",
             "title": "Generic parameters"
         },
         {
-            "location": "/apidoc/#methods_4",
+            "location": "/apidoc/#methods_3",
             "text": "",
             "title": "Methods"
         },
@@ -1111,7 +756,7 @@
             "title": "Method Equals"
         },
         {
-            "location": "/apidoc/#parameters_57",
+            "location": "/apidoc/#parameters_34",
             "text": "Name  Description      other  Result to compare with",
             "title": "Parameters"
         },
@@ -1121,7 +766,7 @@
             "title": "Method Equals"
         },
         {
-            "location": "/apidoc/#parameters_58",
+            "location": "/apidoc/#parameters_35",
             "text": "Name  Description      obj  Object to compare with",
             "title": "Parameters"
         },
@@ -1154,6 +799,361 @@
             "location": "/apidoc/#property-iserror",
             "text": "Indicates that the result is on the failure path (Error case).             You should expect error in  Result`1.Error  field             and no value in the  Result`1.Value  field.",
             "title": "Property IsError"
+        },
+        {
+            "location": "/apidoc/#type-monacscoreasyncresult",
+            "text": "Contains the set of async extensions to work with the  Result`1  type.",
+            "title": "Type Monacs.Core.AsyncResult"
+        },
+        {
+            "location": "/apidoc/#methods_4",
+            "text": "",
+            "title": "Methods"
+        },
+        {
+            "location": "/apidoc/#method-bindasync",
+            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method BindAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_26",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_36",
+            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-bindasync_1",
+            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method BindAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_27",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_37",
+            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-bindasync_2",
+            "text": "Transforms the  result  into another  Result`1  using the  binder  function.             If the input result is Ok, returns the value of the binder call (which is  Result`1  of  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method BindAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_28",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_38",
+            "text": "Name  Description      result  The result to bind with.    binder  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-mapasync",
+            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method MapAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_29",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_39",
+            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-mapasync_1",
+            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method MapAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_30",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_40",
+            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-mapasync_2",
+            "text": "Maps the value of the  result  into another  Result`1  using the  mapper  function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is  TOut  ).             Otherwise returns Error case of the Result of  TOut  .",
+            "title": "Method MapAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_31",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the returned result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_41",
+            "text": "Name  Description      result  The result to map on.    mapper  Function called with the input result value if it's Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_32",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_42",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_1",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_33",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_43",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_2",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_34",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_44",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_3",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_35",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_45",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_4",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_36",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_46",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_5",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_37",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_47",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-matchasync_6",
+            "text": "Does the pattern matching on the  Result`1  type.             If the  result  is Ok, calls  ok  function             with the value from the result as a parameter and returns its result.             Otherwise calls  error  function and returns its result.",
+            "title": "Method MatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_38",
+            "text": "Name  Description      TIn  Type of the value in the result.    TOut  Type of the returned value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_48",
+            "text": "Name  Description      result  The result to match on.    ok  Function called for the Ok case.    error  Function called for the Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-ignoreasync",
+            "text": "Rejects the value of the  Result`1  and returns  Result`1  instead.              If the input  Result`1  is Error then the error details are preserved.",
+            "title": "Method IgnoreAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_39",
+            "text": "Name  Description      T  Type of the encapsulated value.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_49",
+            "text": "Name  Description      result  The result of which the value should be ignored.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-doasync",
+            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_40",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_50",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-doasync_1",
+            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_41",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_51",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-doasync_2",
+            "text": "Performs the  action  with the value of the  result  if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_42",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_52",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Ok case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-dowhenerrorasync",
+            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoWhenErrorAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_43",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_53",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-dowhenerrorasync_1",
+            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoWhenErrorAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_44",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_54",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-dowhenerrorasync_2",
+            "text": "Performs the  action  if the  result  is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.",
+            "title": "Method DoWhenErrorAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_45",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_55",
+            "text": "Name  Description      result  The result to check for a value.    action  Function executed if the result is Error case.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-flipasync",
+            "text": "Transforms  Result`1  with async value inside to  System.Threading.Tasks.Task`1  of the result,             preserving original result's state and value.",
+            "title": "Method FlipAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_46",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_56",
+            "text": "Name  Description      result  Result to take the value from.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-trycatchasync",
+            "text": "Tries to execute  func  .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by  errorHandler  based on the thrown exception.",
+            "title": "Method TryCatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_47",
+            "text": "Name  Description      T  Type of the value in the result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_57",
+            "text": "Name  Description      func  Function to execute.    errorHandler  Function that generates error details in case of exception.",
+            "title": "Parameters"
+        },
+        {
+            "location": "/apidoc/#method-trycatchasync_1",
+            "text": "Tries to execute  func  with the value from the  result  as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by  errorHandler  based on the thrown exception.             If the  result  is Error function is not executed and the Error is returned.",
+            "title": "Method TryCatchAsync"
+        },
+        {
+            "location": "/apidoc/#generic-parameters_48",
+            "text": "Name  Description      TIn  Type of the value in the input result.    TOut  Type of the value in the output result.",
+            "title": "Generic parameters"
+        },
+        {
+            "location": "/apidoc/#parameters_58",
+            "text": "Name  Description      result  Result to take the value from.    func  Function to execute.    errorHandler  Function that generates error details in case of exception.",
+            "title": "Parameters"
         },
         {
             "location": "/apidoc/#type-monacscoreresult",
@@ -1671,9 +1671,9 @@
             "title": "Parameters"
         },
         {
-            "location": "/apidoc/#type-monacscoreunitresult",
+            "location": "/apidoc/#type-monacscoreunitunitresult",
             "text": "Contains the set of extensions to work with the  Result`1  type.",
-            "title": "Type Monacs.Core.Unit.Result"
+            "title": "Type Monacs.Core.Unit.UnitResult"
         },
         {
             "location": "/apidoc/#methods_6",

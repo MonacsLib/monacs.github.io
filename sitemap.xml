@@ -3,16 +3,16 @@
 
     
     <url>
-     <loc>/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/quickstart/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/quickstart/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,20 +20,26 @@
     
         
     <url>
-     <loc>/option/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/option/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/result/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/result/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/errors/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/errors/</loc>
+     <lastmod>2018-05-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://monacslib.github.io/unit/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -41,16 +47,16 @@
 
     
     <url>
-     <loc>/glossary/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/glossary/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/apidoc/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <loc>https://monacslib.github.io/apidoc/</loc>
+     <lastmod>2018-05-21</lastmod>
      <changefreq>daily</changefreq>
     </url>
     

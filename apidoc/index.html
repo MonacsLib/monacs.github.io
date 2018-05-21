@@ -73,6 +73,10 @@
                     
     <a class="" href="../errors/">ErrorDetails</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../unit/">Unit</a>
+                </li>
     </ul>
 	    </li>
           
@@ -90,8 +94,6 @@
     
         <ul>
         
-            <li><a class="toctree-l3" href="#type-monacscoreasyncresult">Type Monacs.Core.Async.Result</a></li>
-        
             <li><a class="toctree-l3" href="#type-monacscoreerrordetails">Type Monacs.Core.ErrorDetails</a></li>
         
             <li><a class="toctree-l3" href="#type-monacscoreerrorlevel">Type Monacs.Core.ErrorLevel</a></li>
@@ -104,9 +106,11 @@
         
             <li><a class="toctree-l3" href="#type-monacscoreresultt">Type Monacs.Core.Result&lt;T&gt;</a></li>
         
+            <li><a class="toctree-l3" href="#type-monacscoreasyncresult">Type Monacs.Core.AsyncResult</a></li>
+        
             <li><a class="toctree-l3" href="#type-monacscoreresult">Type Monacs.Core.Result</a></li>
         
-            <li><a class="toctree-l3" href="#type-monacscoreunitresult">Type Monacs.Core.Unit.Result</a></li>
+            <li><a class="toctree-l3" href="#type-monacscoreunitunitresult">Type Monacs.Core.Unit.UnitResult</a></li>
         
             <li><a class="toctree-l3" href="#type-monacscoreunitunit">Type Monacs.Core.Unit.Unit</a></li>
         
@@ -149,917 +153,6 @@
             <div class="section">
               
                 <h1 id="assembly-monacscore">Assembly <code>Monacs.Core</code></h1>
-<h2 id="type-monacscoreasyncresult">Type <a name="T%3aMonacs.Core.Async.Result"><code>Monacs.Core.Async.Result</code></a></h2>
-<p>Contains the set of async extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
-<h3 id="methods">Methods</h3>
-<h4 id="method-bindasync">Method <a name="M%3aMonacs.Core.Async.Result.BindAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%601%7d%7d%7d)"><code>BindAsync</code></a></h4>
-<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to bind with.</td>
-</tr>
-<tr>
-<td>binder</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-bindasync_1">Method <a name="M%3aMonacs.Core.Async.Result.BindAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%601%7d%7d%7d)"><code>BindAsync</code></a></h4>
-<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters_1">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_1">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to bind with.</td>
-</tr>
-<tr>
-<td>binder</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-bindasync_2">Method <a name="M%3aMonacs.Core.Async.Result.BindAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cMonacs.Core.Result%7b%60%601%7d%7d)"><code>BindAsync</code></a></h4>
-<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters_2">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_2">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to bind with.</td>
-</tr>
-<tr>
-<td>binder</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-mapasync">Method <a name="M%3aMonacs.Core.Async.Result.MapAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MapAsync</code></a></h4>
-<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters_3">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_3">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to map on.</td>
-</tr>
-<tr>
-<td>mapper</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-mapasync_1">Method <a name="M%3aMonacs.Core.Async.Result.MapAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MapAsync</code></a></h4>
-<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters_4">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_4">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to map on.</td>
-</tr>
-<tr>
-<td>mapper</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-mapasync_2">Method <a name="M%3aMonacs.Core.Async.Result.MapAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d)"><code>MapAsync</code></a></h4>
-<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
-<h5 id="generic-parameters_5">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the returned result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_5">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to map on.</td>
-</tr>
-<tr>
-<td>mapper</td>
-<td>Function called with the input result value if it's Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_6">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_6">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_1">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_7">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_7">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_2">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_8">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_8">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_3">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_9">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_9">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_4">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_10">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_10">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_5">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_11">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_11">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-matchasync_6">Method <a name="M%3aMonacs.Core.Async.Result.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
-<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_12">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the returned value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_12">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to match on.</td>
-</tr>
-<tr>
-<td>ok</td>
-<td>Function called for the Ok case.</td>
-</tr>
-<tr>
-<td>error</td>
-<td>Function called for the Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-ignoreasync">Method <a name="M%3aMonacs.Core.Async.Result.IgnoreAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d)"><code>IgnoreAsync</code></a></h4>
-<p>Rejects the value of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> and returns <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> instead.              If the input <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> is Error then the error details are preserved.</p>
-<h5 id="generic-parameters_13">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the encapsulated value.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_13">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result of which the value should be ignored.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-doasync">Method <a name="M%3aMonacs.Core.Async.Result.DoAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Action%7b%60%600%7d)"><code>DoAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_14">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_14">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-doasync_1">Method <a name="M%3aMonacs.Core.Async.Result.DoAsync%60%601(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7d)"><code>DoAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_15">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_15">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-doasync_2">Method <a name="M%3aMonacs.Core.Async.Result.DoAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7d)"><code>DoAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_16">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_16">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Ok case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-dowhenerrorasync">Method <a name="M%3aMonacs.Core.Async.Result.DoWhenErrorAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Action%7bMonacs.Core.ErrorDetails%7d)"><code>DoWhenErrorAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_17">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_17">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-dowhenerrorasync_1">Method <a name="M%3aMonacs.Core.Async.Result.DoWhenErrorAsync%60%601(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7d)"><code>DoWhenErrorAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_18">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_18">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-dowhenerrorasync_2">Method <a name="M%3aMonacs.Core.Async.Result.DoWhenErrorAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7d)"><code>DoWhenErrorAsync</code></a></h4>
-<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
-<h5 id="generic-parameters_19">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_19">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>The result to check for a value.</td>
-</tr>
-<tr>
-<td>action</td>
-<td>Function executed if the result is Error case.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-flipasync">Method <a name="M%3aMonacs.Core.Async.Result.FlipAsync%60%601(Monacs.Core.Result%7bSystem.Threading.Tasks.Task%7b%60%600%7d%7d)"><code>FlipAsync</code></a></h4>
-<p>Transforms <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> with async value inside to <a href="#T%3aSystem.Threading.Tasks.Task%601"><c>System.Threading.Tasks.Task`1</c></a> of the result,             preserving original result's state and value.</p>
-<h5 id="generic-parameters_20">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_20">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>Result to take the value from.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-trycatchasync">Method <a name="M%3aMonacs.Core.Async.Result.TryCatchAsync%60%601(System.Func%7bSystem.Threading.Tasks.Task%7b%60%600%7d%7d%2cSystem.Func%7bSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatchAsync</code></a></h4>
-<p>Tries to execute <a href="#func"><c>func</c></a> .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by <a href="#errorHandler"><c>errorHandler</c></a> based on the thrown exception.</p>
-<h5 id="generic-parameters_21">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td>Type of the value in the result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_21">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>func</td>
-<td>Function to execute.</td>
-</tr>
-<tr>
-<td>errorHandler</td>
-<td>Function that generates error details in case of exception.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="method-trycatchasync_1">Method <a name="M%3aMonacs.Core.Async.Result.TryCatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatchAsync</code></a></h4>
-<p>Tries to execute <a href="#func"><c>func</c></a> with the value from the <a href="#result"><c>result</c></a> as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by <a href="#errorHandler"><c>errorHandler</c></a> based on the thrown exception.             If the <a href="#result"><c>result</c></a> is Error function is not executed and the Error is returned.</p>
-<h5 id="generic-parameters_22">Generic parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>TIn</td>
-<td>Type of the value in the input result.</td>
-</tr>
-<tr>
-<td>TOut</td>
-<td>Type of the value in the output result.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="parameters_22">Parameters</h5>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>result</td>
-<td>Result to take the value from.</td>
-</tr>
-<tr>
-<td>func</td>
-<td>Function to execute.</td>
-</tr>
-<tr>
-<td>errorHandler</td>
-<td>Function that generates error details in case of exception.</td>
-</tr>
-</tbody>
-</table>
 <h2 id="type-monacscoreerrordetails">Type <a name="T%3aMonacs.Core.ErrorDetails"><code>Monacs.Core.ErrorDetails</code></a></h2>
 <p>Represents the details of the error in case of failed operation.             To create the instances use the factory methods from the <a href="#T%3aMonacs.Core.Errors"><c>Errors</c></a> class.</p>
 <h3 id="properties">Properties</h3>
@@ -1075,14 +168,12 @@
 <p>Contains optional error metadata.</p>
 <h2 id="type-monacscoreerrorlevel">Type <a name="T%3aMonacs.Core.ErrorLevel"><code>Monacs.Core.ErrorLevel</code></a></h2>
 <p>Represents the severity of the error.</p>
-<h3 id="fields">Fields</h3>
-<h4 id="field-trace">Field <a name="F%3aMonacs.Core.ErrorLevel.Trace"><code>Trace</code></a></h4>
 <h2 id="type-monacscoreerrors">Type <a name="T%3aMonacs.Core.Errors"><code>Monacs.Core.Errors</code></a></h2>
 <p>Contains factory methods to create instances of <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> in a more convenient way.</p>
-<h3 id="methods_1">Methods</h3>
+<h3 id="methods">Methods</h3>
 <h4 id="method-trace">Method <a name="M%3aMonacs.Core.Errors.Trace(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Trace</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Trace"><c>ErrorLevel.Trace</c></a> .</p>
-<h5 id="parameters_23">Parameters</h5>
+<h5 id="parameters">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1111,7 +202,7 @@
 </table>
 <h4 id="method-debug">Method <a name="M%3aMonacs.Core.Errors.Debug(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Debug</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Debug"><c>ErrorLevel.Debug</c></a> .</p>
-<h5 id="parameters_24">Parameters</h5>
+<h5 id="parameters_1">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1140,7 +231,7 @@
 </table>
 <h4 id="method-info">Method <a name="M%3aMonacs.Core.Errors.Info(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Info</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Info"><c>ErrorLevel.Info</c></a> .</p>
-<h5 id="parameters_25">Parameters</h5>
+<h5 id="parameters_2">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1169,7 +260,7 @@
 </table>
 <h4 id="method-warn">Method <a name="M%3aMonacs.Core.Errors.Warn(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Warn</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Warn"><c>ErrorLevel.Warn</c></a> .</p>
-<h5 id="parameters_26">Parameters</h5>
+<h5 id="parameters_3">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1198,7 +289,7 @@
 </table>
 <h4 id="method-error">Method <a name="M%3aMonacs.Core.Errors.Error(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Error</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Error"><c>ErrorLevel.Error</c></a> .</p>
-<h5 id="parameters_27">Parameters</h5>
+<h5 id="parameters_4">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1227,7 +318,7 @@
 </table>
 <h4 id="method-fatal">Method <a name="M%3aMonacs.Core.Errors.Fatal(System.String%2cSystem.String%2cSystem.Exception%2cSystem.Object)"><code>Fatal</code></a></h4>
 <p>Creates <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> with level <a href="#F%3aMonacs.Core.ErrorLevel.Fatal"><c>ErrorLevel.Fatal</c></a> .</p>
-<h5 id="parameters_28">Parameters</h5>
+<h5 id="parameters_5">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1258,7 +349,7 @@
 <p>Encapsulates optional value.             It is recommended to use provided extension methods and not to use properties of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> directly. </p>
 <p>The Option can contain a value of a type <a href="#T"><c>T</c></a> and it's called Some in such case. </p>
 <p>If no value is encapsulated it's called None.</p>
-<h3 id="generic-parameters_23">Generic parameters</h3>
+<h3 id="generic-parameters">Generic parameters</h3>
 <table>
 <thead>
 <tr>
@@ -1273,12 +364,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="methods_2">Methods</h3>
+<h3 id="methods_1">Methods</h3>
 <h4 id="method-tostring">Method <a name="M%3aMonacs.Core.Option%601.ToString"><code>ToString</code></a></h4>
 <p>Creates a string representation of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> .</p>
 <h4 id="method-equals">Method <a name="M%3aMonacs.Core.Option%601.Equals(Monacs.Core.Option%7b%600%7d)"><code>Equals</code></a></h4>
 <p>Compares two instances of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> .             Two options are equal if both are of the same type, the same case             and the underlying values are equal.</p>
-<h5 id="parameters_29">Parameters</h5>
+<h5 id="parameters_6">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1295,7 +386,7 @@
 </table>
 <h4 id="method-equals_1">Method <a name="M%3aMonacs.Core.Option%601.Equals(%600)"><code>Equals</code></a></h4>
 <p>Compares <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> with the value of type <a href="#T"><c>T</c></a> .             Option is equal to the value of the underlying type if it's Some case             and encapsulated value is equal to <a href="#other"><c>other</c></a> value.</p>
-<h5 id="parameters_30">Parameters</h5>
+<h5 id="parameters_7">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1312,7 +403,7 @@
 </table>
 <h4 id="method-equals_2">Method <a name="M%3aMonacs.Core.Option%601.Equals(System.Object)"><code>Equals</code></a></h4>
 <p>Compares the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> with other object.             Option is only equal to other option given the conditions described in <a href="#M%3aMonacs.Core.Option%601.Equals(Monacs.Core.Option%7b%600%7d)"><c>Option`1.Equals(Option{`0})</c></a> .</p>
-<h5 id="parameters_31">Parameters</h5>
+<h5 id="parameters_8">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1354,10 +445,10 @@
 <p>Returns true if the option has no value (is None case).</p>
 <h2 id="type-monacscoreoption">Type <a name="T%3aMonacs.Core.Option"><code>Monacs.Core.Option</code></a></h2>
 <p>Contains the set of extensions to work with the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.</p>
-<h3 id="methods_3">Methods</h3>
+<h3 id="methods_2">Methods</h3>
 <h4 id="method-some">Method <a name="M%3aMonacs.Core.Option.Some%60%601(%60%600)"><code>Some</code></a></h4>
 <p>Creates the Some case instance of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type, encapsulating provided value.</p>
-<h5 id="generic-parameters_24">Generic parameters</h5>
+<h5 id="generic-parameters_1">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1372,7 +463,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_32">Parameters</h5>
+<h5 id="parameters_9">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1389,7 +480,7 @@
 </table>
 <h4 id="method-none">Method <a name="M%3aMonacs.Core.Option.None%60%601"><code>None</code></a></h4>
 <p>Creates the None case instance of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type, containing no value.</p>
-<h5 id="generic-parameters_25">Generic parameters</h5>
+<h5 id="generic-parameters_2">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1406,7 +497,7 @@
 </table>
 <h4 id="method-ofobject">Method <a name="M%3aMonacs.Core.Option.OfObject%60%601(%60%600)"><code>OfObject</code></a></h4>
 <p>Converts the value of class T to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
-<h5 id="generic-parameters_26">Generic parameters</h5>
+<h5 id="generic-parameters_3">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1421,7 +512,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_33">Parameters</h5>
+<h5 id="parameters_10">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1439,7 +530,7 @@
 <h4 id="method-tooption">Method <a name="M%3aMonacs.Core.Option.ToOption%60%601(%60%600)"><code>ToOption</code></a></h4>
 <p>Converts the value of class T to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
 <p><em>Remarks:</em> Extension method variant of <a href="#M%3aMonacs.Core.Option.OfObject%60%601(%60%600)"><c>Option.OfObject``1(``0)</c></a></p>
-<h5 id="generic-parameters_27">Generic parameters</h5>
+<h5 id="generic-parameters_4">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1454,7 +545,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_34">Parameters</h5>
+<h5 id="parameters_11">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1471,7 +562,7 @@
 </table>
 <h4 id="method-ofnullable">Method <a name="M%3aMonacs.Core.Option.OfNullable%60%601(System.Nullable%7b%60%600%7d)"><code>OfNullable</code></a></h4>
 <p>Converts the value of <a href="#T%3aSystem.Nullable%601"><c>System.Nullable`1</c></a> to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
-<h5 id="generic-parameters_28">Generic parameters</h5>
+<h5 id="generic-parameters_5">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1486,7 +577,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_35">Parameters</h5>
+<h5 id="parameters_12">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1504,7 +595,7 @@
 <h4 id="method-tooption_1">Method <a name="M%3aMonacs.Core.Option.ToOption%60%601(System.Nullable%7b%60%600%7d)"><code>ToOption</code></a></h4>
 <p>Converts the value of <a href="#T%3aSystem.Nullable%601"><c>System.Nullable`1</c></a> to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is null, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
 <p><em>Remarks:</em> Extension method variant of <a href="#M%3aMonacs.Core.Option.OfNullable%60%601(System.Nullable%7b%60%600%7d)"><c>Option.OfNullable``1(System.Nullable{``0})</c></a></p>
-<h5 id="generic-parameters_29">Generic parameters</h5>
+<h5 id="generic-parameters_6">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1519,7 +610,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_36">Parameters</h5>
+<h5 id="parameters_13">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1536,7 +627,7 @@
 </table>
 <h4 id="method-tonullable">Method <a name="M%3aMonacs.Core.Option.ToNullable%60%601(Monacs.Core.Option%7b%60%600%7d)"><code>ToNullable</code></a></h4>
 <p>Converts the value of <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> to the <a href="#T%3aSystem.Nullable%601"><c>System.Nullable`1</c></a> type.             If the option is the None case, null is yielded.             Otherwise encapsulated value is returned.</p>
-<h5 id="generic-parameters_30">Generic parameters</h5>
+<h5 id="generic-parameters_7">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1551,7 +642,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_37">Parameters</h5>
+<h5 id="parameters_14">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1568,7 +659,7 @@
 </table>
 <h4 id="method-ofstring">Method <a name="M%3aMonacs.Core.Option.OfString(System.String)"><code>OfString</code></a></h4>
 <p>Converts the string value to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
-<h5 id="parameters_38">Parameters</h5>
+<h5 id="parameters_15">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1586,7 +677,7 @@
 <h4 id="method-tooption_2">Method <a name="M%3aMonacs.Core.Option.ToOption(System.String)"><code>ToOption</code></a></h4>
 <p>Converts the string value to the <a href="#T%3aOption%7bstring%7d"><c>Option{string}</c></a> type.             If the value is null or empty string, the None case is yielded.             Otherwise Some case with provided value is returned.</p>
 <p><em>Remarks:</em> Extension method variant of <a href="#M%3aMonacs.Core.Option.OfString(System.String)"><c>Option.OfString(System.String)</c></a></p>
-<h5 id="parameters_39">Parameters</h5>
+<h5 id="parameters_16">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1603,7 +694,7 @@
 </table>
 <h4 id="method-ofresult">Method <a name="M%3aMonacs.Core.Option.OfResult%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>OfResult</code></a></h4>
 <p>Converts the value of <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.</p>
-<h5 id="generic-parameters_31">Generic parameters</h5>
+<h5 id="generic-parameters_8">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1618,7 +709,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_40">Parameters</h5>
+<h5 id="parameters_17">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1636,7 +727,7 @@
 <h4 id="method-tooption_3">Method <a name="M%3aMonacs.Core.Option.ToOption%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>ToOption</code></a></h4>
 <p>Converts the value of <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> to the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the value is the Error case, the None case is yielded.             Otherwise Some case with encapsulated value is returned.</p>
 <p><em>Remarks:</em> Extension method variant of <a href="#M%3aMonacs.Core.Option.OfResult%60%601(Monacs.Core.Result%7b%60%600%7d)"><c>Option.OfResult``1(Result{``0})</c></a></p>
-<h5 id="generic-parameters_32">Generic parameters</h5>
+<h5 id="generic-parameters_9">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1651,7 +742,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_41">Parameters</h5>
+<h5 id="parameters_18">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1668,7 +759,7 @@
 </table>
 <h4 id="method-trygetoption">Method <a name="M%3aMonacs.Core.Option.TryGetOption%60%602(System.Collections.Generic.IDictionary%7b%60%600%2c%60%601%7d%2c%60%600)"><code>TryGetOption</code></a></h4>
 <p>Tries to get the element with the given <a href="#key"><c>key</c></a> from the <a href="#dictionary"><c>dictionary</c></a> .             If the value is found, returns Some case of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type with the value from the dictionary.             Otherwise returns None case of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.</p>
-<h5 id="generic-parameters_33">Generic parameters</h5>
+<h5 id="generic-parameters_10">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1687,7 +778,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_42">Parameters</h5>
+<h5 id="parameters_19">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1708,7 +799,7 @@
 </table>
 <h4 id="method-trygetoption_1">Method <a name="M%3aMonacs.Core.Option.TryGetOption%60%602(System.Linq.ILookup%7b%60%600%2c%60%601%7d%2c%60%600)"><code>TryGetOption</code></a></h4>
 <p>Tries to get the elements with the given <a href="#key"><c>key</c></a> from the <a href="#lookup"><c>lookup</c></a> .             If any value is found, returns Some case of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type with the values from the lookup.             Otherwise returns None case of the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.</p>
-<h5 id="generic-parameters_34">Generic parameters</h5>
+<h5 id="generic-parameters_11">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1727,7 +818,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_43">Parameters</h5>
+<h5 id="parameters_20">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1748,7 +839,7 @@
 </table>
 <h4 id="method-match">Method <a name="M%3aMonacs.Core.Option.Match%60%602(Monacs.Core.Option%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7b%60%601%7d)"><code>Match</code></a></h4>
 <p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the <a href="#option"><c>option</c></a> is Some, calls <a href="#some"><c>some</c></a> function             with the value from the option as a parameter and returns its result.             Otherwise calls <a href="#none"><c>none</c></a> function and returns its result.</p>
-<h5 id="generic-parameters_35">Generic parameters</h5>
+<h5 id="generic-parameters_12">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1767,7 +858,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_44">Parameters</h5>
+<h5 id="parameters_21">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1792,7 +883,7 @@
 </table>
 <h4 id="method-matchto">Method <a name="M%3aMonacs.Core.Option.MatchTo%60%602(Monacs.Core.Option%7b%60%600%7d%2c%60%601%2c%60%601)"><code>MatchTo</code></a></h4>
 <p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> type.             If the <a href="#option"><c>option</c></a> is Some, returns <a href="#some"><c>some</c></a> value.             Otherwise returns <a href="#none"><c>none</c></a> value.</p>
-<h5 id="generic-parameters_36">Generic parameters</h5>
+<h5 id="generic-parameters_13">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1811,7 +902,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_45">Parameters</h5>
+<h5 id="parameters_22">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1836,7 +927,7 @@
 </table>
 <h4 id="method-bind">Method <a name="M%3aMonacs.Core.Option.Bind%60%602(Monacs.Core.Option%7b%60%600%7d%2cSystem.Func%7b%60%600%2cMonacs.Core.Option%7b%60%601%7d%7d)"><code>Bind</code></a></h4>
 <p>Transforms the <a href="#option"><c>option</c></a> into another <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input option is Some, returns the value of the binder call (which is <a href="#TOut"><c>TOut</c></a> option).             Otherwise returns None case of the <a href="#TOut"><c>TOut</c></a> option.</p>
-<h5 id="generic-parameters_37">Generic parameters</h5>
+<h5 id="generic-parameters_14">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1855,7 +946,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_46">Parameters</h5>
+<h5 id="parameters_23">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1876,7 +967,7 @@
 </table>
 <h4 id="method-map">Method <a name="M%3aMonacs.Core.Option.Map%60%602(Monacs.Core.Option%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d)"><code>Map</code></a></h4>
 <p>Maps the value of the <a href="#option"><c>option</c></a> into another <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input option is Some, returns the Some case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns None case of the <a href="#TOut"><c>TOut</c></a> option.</p>
-<h5 id="generic-parameters_38">Generic parameters</h5>
+<h5 id="generic-parameters_15">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1895,7 +986,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_47">Parameters</h5>
+<h5 id="parameters_24">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1916,7 +1007,7 @@
 </table>
 <h4 id="method-getordefault">Method <a name="M%3aMonacs.Core.Option.GetOrDefault%60%601(Monacs.Core.Option%7b%60%600%7d%2c%60%600)"><code>GetOrDefault</code></a></h4>
 <p>Gets the value of the <a href="#option"><c>option</c></a> if it's Some case.             If the option is None case returns value specified by the <a href="#whenNone"><c>whenNone</c></a> parameter;             if the parameter is not set returns the default value of the type <a href="#T"><c>T</c></a> .</p>
-<h5 id="generic-parameters_39">Generic parameters</h5>
+<h5 id="generic-parameters_16">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1931,7 +1022,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_48">Parameters</h5>
+<h5 id="parameters_25">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1953,7 +1044,7 @@
 <h4 id="method-getordefault_1">Method <a name="M%3aMonacs.Core.Option.GetOrDefault%60%602(Monacs.Core.Option%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2c%60%601)"><code>GetOrDefault</code></a></h4>
 <p>Gets the value from the <a href="#option"><c>option</c></a> using the <a href="#getter"><c>getter</c></a> function if it's Some case.             If the option is None case returns value specified by the <a href="#whenNone"><c>whenNone</c></a> parameter;             if the parameter is not set returns the default value of the type <a href="#TOut"><c>TOut</c></a> .</p>
 <p><em>Remarks:</em> Effectively the combination of <a href="#M%3aMonacs.Core.Option.Map%60%602(Monacs.Core.Option%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d)"><c>Option.Map``2(Option{``0},System.Func{``0,``1})</c></a> and <a href="#M%3aMonacs.Core.Option.GetOrDefault%60%601(Monacs.Core.Option%7b%60%600%7d%2c%60%600)"><c>Option.GetOrDefault``1(Option{``0},``0)</c></a> calls.</p>
-<h5 id="generic-parameters_40">Generic parameters</h5>
+<h5 id="generic-parameters_17">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1972,7 +1063,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_49">Parameters</h5>
+<h5 id="parameters_26">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -1997,7 +1088,7 @@
 </table>
 <h4 id="method-do">Method <a name="M%3aMonacs.Core.Option.Do%60%601(Monacs.Core.Option%7b%60%600%7d%2cSystem.Action%7b%60%600%7d)"><code>Do</code></a></h4>
 <p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#option"><c>option</c></a> if it's Some case.             If the option is None case nothing happens.             In both cases unmodified option is returned.</p>
-<h5 id="generic-parameters_41">Generic parameters</h5>
+<h5 id="generic-parameters_18">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2012,7 +1103,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_50">Parameters</h5>
+<h5 id="parameters_27">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2033,7 +1124,7 @@
 </table>
 <h4 id="method-dowhennone">Method <a name="M%3aMonacs.Core.Option.DoWhenNone%60%601(Monacs.Core.Option%7b%60%600%7d%2cSystem.Action)"><code>DoWhenNone</code></a></h4>
 <p>Performs the <a href="#action"><c>action</c></a> if the <a href="#option"><c>option</c></a> is None case.             If the option is Some case nothing happens.             In both cases unmodified option is returned.</p>
-<h5 id="generic-parameters_42">Generic parameters</h5>
+<h5 id="generic-parameters_19">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2048,7 +1139,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_51">Parameters</h5>
+<h5 id="parameters_28">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2069,7 +1160,7 @@
 </table>
 <h4 id="method-choose">Method <a name="M%3aMonacs.Core.Option.Choose%60%601(System.Collections.Generic.IEnumerable%7bMonacs.Core.Option%7b%60%600%7d%7d)"><code>Choose</code></a></h4>
 <p>Returns the collection of values of elements from the <a href="#T%3aMonacs.Core.Option%601"><c>Option`1</c></a> collection             that are Some case (so contain some value).</p>
-<h5 id="generic-parameters_43">Generic parameters</h5>
+<h5 id="generic-parameters_20">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2084,7 +1175,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_52">Parameters</h5>
+<h5 id="parameters_29">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2101,7 +1192,7 @@
 </table>
 <h4 id="method-sequence">Method <a name="M%3aMonacs.Core.Option.Sequence%60%601(System.Collections.Generic.IEnumerable%7bMonacs.Core.Option%7b%60%600%7d%7d)"><code>Sequence</code></a></h4>
 <p>If all elements in the input collection are Some case, returns the Some of the collection of underlying values.             Otherwise returns None.</p>
-<h5 id="generic-parameters_44">Generic parameters</h5>
+<h5 id="generic-parameters_21">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2116,7 +1207,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_53">Parameters</h5>
+<h5 id="parameters_30">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2133,7 +1224,7 @@
 </table>
 <h4 id="method-tryfind">Method <a name="M%3aMonacs.Core.Option.TryFind%60%601(System.Collections.Generic.IEnumerable%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Boolean%7d)"><code>TryFind</code></a></h4>
 <p>Tries to find the first element of the <a href="#items"><c>items</c></a> collection matching the <a href="#predicate"><c>predicate</c></a> .             If element is found, returns Some with the value of that element.             Otherwise returns None.</p>
-<h5 id="generic-parameters_45">Generic parameters</h5>
+<h5 id="generic-parameters_22">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2148,7 +1239,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_54">Parameters</h5>
+<h5 id="parameters_31">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2169,7 +1260,7 @@
 </table>
 <h4 id="method-tryfirst">Method <a name="M%3aMonacs.Core.Option.TryFirst%60%601(System.Collections.Generic.IEnumerable%7b%60%600%7d)"><code>TryFirst</code></a></h4>
 <p>Tries to get the the element in the <a href="#items"><c>items</c></a> collection.             If element is found, returns Some with the value of that element.             Otherwise returns None.</p>
-<h5 id="generic-parameters_46">Generic parameters</h5>
+<h5 id="generic-parameters_23">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2184,7 +1275,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_55">Parameters</h5>
+<h5 id="parameters_32">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2201,7 +1292,7 @@
 </table>
 <h4 id="method-tryelementat">Method <a name="M%3aMonacs.Core.Option.TryElementAt%60%601(System.Collections.Generic.IEnumerable%7b%60%600%7d%2cSystem.Int32)"><code>TryElementAt</code></a></h4>
 <p>Tries to get the element of the <a href="#items"><c>items</c></a> collection at the posision given by the <a href="#index"><c>index</c></a> parameter.             If element is found, returns Some with the value of that element.             Otherwise returns None.</p>
-<h5 id="generic-parameters_47">Generic parameters</h5>
+<h5 id="generic-parameters_24">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2216,7 +1307,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_56">Parameters</h5>
+<h5 id="parameters_33">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2239,7 +1330,7 @@
 <p>Represents the result of the operation that may succeed or fail.             It is recommended to use provided extension methods and not to use properties of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> directly. </p>
 <p>If the operation succeeded it will contain a value of a type <a href="#T"><c>T</c></a> and it's called Ok in such case. </p>
 <p>If the operation failed it will contain error information of type <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> and it's called Error.</p>
-<h3 id="generic-parameters_48">Generic parameters</h3>
+<h3 id="generic-parameters_25">Generic parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2254,12 +1345,12 @@
 </tr>
 </tbody>
 </table>
-<h3 id="methods_4">Methods</h3>
+<h3 id="methods_3">Methods</h3>
 <h4 id="method-tostring_1">Method <a name="M%3aMonacs.Core.Result%601.ToString"><code>ToString</code></a></h4>
 <p>Creates a string representation of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> .</p>
 <h4 id="method-equals_3">Method <a name="M%3aMonacs.Core.Result%601.Equals(Monacs.Core.Result%7b%600%7d)"><code>Equals</code></a></h4>
 <p>Compares two instances of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> .             Two results are equal if both are of the same type, the same case             and the underlying values (of errors) are equal.</p>
-<h5 id="parameters_57">Parameters</h5>
+<h5 id="parameters_34">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2276,7 +1367,7 @@
 </table>
 <h4 id="method-equals_4">Method <a name="M%3aMonacs.Core.Result%601.Equals(System.Object)"><code>Equals</code></a></h4>
 <p>Compares the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> with other object.             Result is only equal to other result given the conditions described in <a href="#M%3aMonacs.Core.Result%601.Equals(Monacs.Core.Result%7b%600%7d)"><c>Result`1.Equals(Result{`0})</c></a> .</p>
-<h5 id="parameters_58">Parameters</h5>
+<h5 id="parameters_35">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -2328,6 +1419,917 @@
 <p>Indicates that the Result is on the success path (Ok case).             You should expect the output in the <a href="#P%3aMonacs.Core.Result%601.Value"><c>Result`1.Value</c></a> field.</p>
 <h4 id="property-iserror">Property <a name="P%3aMonacs.Core.Result%601.IsError"><code>IsError</code></a></h4>
 <p>Indicates that the result is on the failure path (Error case).             You should expect error in <a href="#P%3aMonacs.Core.Result%601.Error"><c>Result`1.Error</c></a> field             and no value in the <a href="#P%3aMonacs.Core.Result%601.Value"><c>Result`1.Value</c></a> field.</p>
+<h2 id="type-monacscoreasyncresult">Type <a name="T%3aMonacs.Core.AsyncResult"><code>Monacs.Core.AsyncResult</code></a></h2>
+<p>Contains the set of async extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
+<h3 id="methods_4">Methods</h3>
+<h4 id="method-bindasync">Method <a name="M%3aMonacs.Core.AsyncResult.BindAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%601%7d%7d%7d)"><code>BindAsync</code></a></h4>
+<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_26">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_36">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to bind with.</td>
+</tr>
+<tr>
+<td>binder</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-bindasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.BindAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%601%7d%7d%7d)"><code>BindAsync</code></a></h4>
+<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_27">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_37">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to bind with.</td>
+</tr>
+<tr>
+<td>binder</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-bindasync_2">Method <a name="M%3aMonacs.Core.AsyncResult.BindAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cMonacs.Core.Result%7b%60%601%7d%7d)"><code>BindAsync</code></a></h4>
+<p>Transforms the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#binder"><c>binder</c></a> function.             If the input result is Ok, returns the value of the binder call (which is <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_28">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_38">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to bind with.</td>
+</tr>
+<tr>
+<td>binder</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-mapasync">Method <a name="M%3aMonacs.Core.AsyncResult.MapAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MapAsync</code></a></h4>
+<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_29">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_39">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to map on.</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-mapasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.MapAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MapAsync</code></a></h4>
+<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_30">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_40">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to map on.</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-mapasync_2">Method <a name="M%3aMonacs.Core.AsyncResult.MapAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d)"><code>MapAsync</code></a></h4>
+<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function.             If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TOut"><c>TOut</c></a> ).             Otherwise returns Error case of the Result of <a href="#TOut"><c>TOut</c></a> .</p>
+<h5 id="generic-parameters_31">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_41">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to map on.</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_32">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_42">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_33">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_43">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_2">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_34">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_44">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_3">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_35">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_45">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_4">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_36">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_46">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_5">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%601%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_37">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_47">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchasync_6">Method <a name="M%3aMonacs.Core.AsyncResult.MatchAsync%60%602(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d)"><code>MatchAsync</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_38">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_48">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-ignoreasync">Method <a name="M%3aMonacs.Core.AsyncResult.IgnoreAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d)"><code>IgnoreAsync</code></a></h4>
+<p>Rejects the value of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> and returns <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> instead.              If the input <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> is Error then the error details are preserved.</p>
+<h5 id="generic-parameters_39">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the encapsulated value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_49">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result of which the value should be ignored.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-doasync">Method <a name="M%3aMonacs.Core.AsyncResult.DoAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Action%7b%60%600%7d)"><code>DoAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_40">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_50">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-doasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.DoAsync%60%601(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7d)"><code>DoAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_41">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_51">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-doasync_2">Method <a name="M%3aMonacs.Core.AsyncResult.DoAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7d)"><code>DoAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> with the value of the <a href="#result"><c>result</c></a> if it's Ok case.             If the result is Error case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_42">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_52">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-dowhenerrorasync">Method <a name="M%3aMonacs.Core.AsyncResult.DoWhenErrorAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Action%7bMonacs.Core.ErrorDetails%7d)"><code>DoWhenErrorAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_43">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_53">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-dowhenerrorasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.DoWhenErrorAsync%60%601(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7d)"><code>DoWhenErrorAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_44">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_54">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-dowhenerrorasync_2">Method <a name="M%3aMonacs.Core.AsyncResult.DoWhenErrorAsync%60%601(System.Threading.Tasks.Task%7bMonacs.Core.Result%7b%60%600%7d%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2cSystem.Threading.Tasks.Task%7d)"><code>DoWhenErrorAsync</code></a></h4>
+<p>Performs the <a href="#action"><c>action</c></a> if the <a href="#result"><c>result</c></a> is Error case.             If the result is Ok case nothing happens.             In both cases unmodified result is returned.</p>
+<h5 id="generic-parameters_45">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_55">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to check for a value.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Function executed if the result is Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-flipasync">Method <a name="M%3aMonacs.Core.AsyncResult.FlipAsync%60%601(Monacs.Core.Result%7bSystem.Threading.Tasks.Task%7b%60%600%7d%7d)"><code>FlipAsync</code></a></h4>
+<p>Transforms <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> with async value inside to <a href="#T%3aSystem.Threading.Tasks.Task%601"><c>System.Threading.Tasks.Task`1</c></a> of the result,             preserving original result's state and value.</p>
+<h5 id="generic-parameters_46">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_56">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result to take the value from.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-trycatchasync">Method <a name="M%3aMonacs.Core.AsyncResult.TryCatchAsync%60%601(System.Func%7bSystem.Threading.Tasks.Task%7b%60%600%7d%7d%2cSystem.Func%7bSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatchAsync</code></a></h4>
+<p>Tries to execute <a href="#func"><c>func</c></a> .             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by <a href="#errorHandler"><c>errorHandler</c></a> based on the thrown exception.</p>
+<h5 id="generic-parameters_47">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T</td>
+<td>Type of the value in the result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_57">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>func</td>
+<td>Function to execute.</td>
+</tr>
+<tr>
+<td>errorHandler</td>
+<td>Function that generates error details in case of exception.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-trycatchasync_1">Method <a name="M%3aMonacs.Core.AsyncResult.TryCatchAsync%60%602(Monacs.Core.Result%7b%60%600%7d%2cSystem.Func%7b%60%600%2cSystem.Threading.Tasks.Task%7b%60%601%7d%7d%2cSystem.Func%7b%60%600%2cSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatchAsync</code></a></h4>
+<p>Tries to execute <a href="#func"><c>func</c></a> with the value from the <a href="#result"><c>result</c></a> as an input.             If the execution completes without exception, returns Ok with the function result.             Otherwise returns Error with details generated by <a href="#errorHandler"><c>errorHandler</c></a> based on the thrown exception.             If the <a href="#result"><c>result</c></a> is Error function is not executed and the Error is returned.</p>
+<h5 id="generic-parameters_48">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIn</td>
+<td>Type of the value in the input result.</td>
+</tr>
+<tr>
+<td>TOut</td>
+<td>Type of the value in the output result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_58">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result to take the value from.</td>
+</tr>
+<tr>
+<td>func</td>
+<td>Function to execute.</td>
+</tr>
+<tr>
+<td>errorHandler</td>
+<td>Function that generates error details in case of exception.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="type-monacscoreresult">Type <a name="T%3aMonacs.Core.Result"><code>Monacs.Core.Result</code></a></h2>
 <p>Contains the set of extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
 <h3 id="methods_5">Methods</h3>
@@ -3592,12 +3594,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="type-monacscoreunitresult">Type <a name="T%3aMonacs.Core.Unit.Result"><code>Monacs.Core.Unit.Result</code></a></h2>
+<h2 id="type-monacscoreunitunitresult">Type <a name="T%3aMonacs.Core.Unit.UnitResult"><code>Monacs.Core.Unit.UnitResult</code></a></h2>
 <p>Contains the set of extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
 <h3 id="methods_6">Methods</h3>
-<h4 id="method-ok_1">Method <a name="M%3aMonacs.Core.Unit.Result.Ok"><code>Ok</code></a></h4>
+<h4 id="method-ok_1">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Ok"><code>Ok</code></a></h4>
 <p>Creates the Ok case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> .</p>
-<h4 id="method-error_2">Method <a name="M%3aMonacs.Core.Unit.Result.Error(Monacs.Core.ErrorDetails)"><code>Error</code></a></h4>
+<h4 id="method-error_2">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Error(Monacs.Core.ErrorDetails)"><code>Error</code></a></h4>
 <p>Creates the Error case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type, containing error instead of value.</p>
 <h5 id="parameters_94">Parameters</h5>
 <table>
@@ -3614,7 +3616,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="method-ignore">Method <a name="M%3aMonacs.Core.Unit.Result.Ignore%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>Ignore</code></a></h4>
+<h4 id="method-ignore">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Ignore%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>Ignore</code></a></h4>
 <p>Rejects the value of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> and returns <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> instead.              If the input <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> is Error then the error details are preserved.</p>
 <h5 id="generic-parameters_80">Generic parameters</h5>
 <table>
@@ -3657,9 +3659,9 @@
 <p>Hash Code of <a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> is always 0.</p>
 <h4 id="method-tostring_2">Method <a name="M%3aMonacs.Core.Unit.Unit.ToString"><code>ToString</code></a></h4>
 <p>String representation of <a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> is ().</p>
-<h4 id="method-op_equality">Method <a name="M%3aMonacs.Core.Unit.Unit.op_Equality(Monacs.Core.Unit.Unit%2cMonacs.Core.Unit.Unit)"><code>op_Equality</code></a></h4>
+<h4 id="method-op_equality">Method <a name="M%3aMonacs.Core.Unit.Unit.op_Equality(Monacs.Core.Unit.Unit%40%2cMonacs.Core.Unit.Unit%40)"><code>op_Equality</code></a></h4>
 <p><a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> is always equal to itself.</p>
-<h4 id="method-op_inequality">Method <a name="M%3aMonacs.Core.Unit.Unit.op_Inequality(Monacs.Core.Unit.Unit%2cMonacs.Core.Unit.Unit)"><code>op_Inequality</code></a></h4>
+<h4 id="method-op_inequality">Method <a name="M%3aMonacs.Core.Unit.Unit.op_Inequality(Monacs.Core.Unit.Unit%40%2cMonacs.Core.Unit.Unit%40)"><code>op_Inequality</code></a></h4>
 <p><a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> is always equal to itself.</p>
 <h3 id="properties_3">Properties</h3>
 <h4 id="property-default">Property <a name="P%3aMonacs.Core.Unit.Unit.Default"><code>Default</code></a></h4>
@@ -3696,6 +3698,8 @@
 
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/MonacsLib/Monacs" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
         <span><a href="../glossary/" style="color: #fcfcfc;">&laquo; Previous</a></span>
