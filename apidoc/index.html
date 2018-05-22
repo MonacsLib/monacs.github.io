@@ -110,7 +110,9 @@
         
             <li><a class="toctree-l3" href="#type-monacscoreresult">Type Monacs.Core.Result</a></li>
         
-            <li><a class="toctree-l3" href="#type-monacscoreunitunitresult">Type Monacs.Core.Unit.UnitResult</a></li>
+            <li><a class="toctree-l3" href="#type-monacscoretupleresult">Type Monacs.Core.TupleResult</a></li>
+        
+            <li><a class="toctree-l3" href="#type-monacscoreunitresult">Type Monacs.Core.UnitResult</a></li>
         
             <li><a class="toctree-l3" href="#type-monacscoreunitunit">Type Monacs.Core.Unit.Unit</a></li>
         
@@ -3594,14 +3596,597 @@
 </tr>
 </tbody>
 </table>
-<h2 id="type-monacscoreunitunitresult">Type <a name="T%3aMonacs.Core.Unit.UnitResult"><code>Monacs.Core.Unit.UnitResult</code></a></h2>
-<p>Contains the set of extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
+<h2 id="type-monacscoretupleresult">Type <a name="T%3aMonacs.Core.TupleResult"><code>Monacs.Core.TupleResult</code></a></h2>
+<p>Contains the set of tuple extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
 <h3 id="methods_6">Methods</h3>
-<h4 id="method-ok_1">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Ok"><code>Ok</code></a></h4>
-<p>Creates the Ok case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> .</p>
-<h4 id="method-error_2">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Error(Monacs.Core.ErrorDetails)"><code>Error</code></a></h4>
-<p>Creates the Error case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type, containing error instead of value.</p>
+<h4 id="method-map2">Method <a name="M%3aMonacs.Core.TupleResult.Map2%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%7d)"><code>Map2</code></a></h4>
+<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function. </p>
+<p>If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TResult"><c>TResult</c></a> ).             Otherwise returns Error case of the Result of <a href="#TResult"><c>TResult</c></a> .</p>
+<h5 id="generic-parameters_80">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first value in input result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second value in input result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
 <h5 id="parameters_94">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to map on.</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-map3">Method <a name="M%3aMonacs.Core.TupleResult.Map3%60%604(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%2c%60%603%7d)"><code>Map3</code></a></h4>
+<p>Maps the value of the <a href="#result"><c>result</c></a> into another <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> using the <a href="#mapper"><c>mapper</c></a> function. </p>
+<p>If the input result is Ok, returns the Ok case with the value of the mapper call (which is <a href="#TResult"><c>TResult</c></a> ).             Otherwise returns Error case of the Result of <a href="#TResult"><c>TResult</c></a> .</p>
+<h5 id="generic-parameters_81">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first value in input result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second value in input result.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of third value in input result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the value in the returned result.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_95">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to map on.</td>
+</tr>
+<tr>
+<td>mapper</td>
+<td>Function called with the input result value if it's Ok case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-bind2">Method <a name="M%3aMonacs.Core.TupleResult.Bind2%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2cMonacs.Core.Result%7b%60%602%7d%7d)"><code>Bind2</code></a></h4>
+<p>Applies railway pattern and binds two functions. </p>
+<p>If the result of the previous function is on the success path, the received result is taken as an argument and the next function is invoked. </p>
+<p>If the result of the previous function is on the failure path, the new error is created to match generic result type, but the error details remain the same.</p>
+<p><em>Returns:</em> Result of the second function or error received from the first function.</p>
+<h5 id="generic-parameters_82">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first output tuple value received from previous function.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second output tuple value received from previous function.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the output value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_96">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Output of previous function</td>
+</tr>
+<tr>
+<td>binder</td>
+<td>Passes the output of first function to the next one.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-bind3">Method <a name="M%3aMonacs.Core.TupleResult.Bind3%60%604(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%2cMonacs.Core.Result%7b%60%603%7d%7d)"><code>Bind3</code></a></h4>
+<p>Applies railway pattern and binds two functions. </p>
+<p>If the result of the previous function is on the success path, the received result is taken as an argument and the next function is invoked. </p>
+<p>If the result of the previous function is on the failure path, the new error is created to match generic result type, but the error details remain the same.</p>
+<p><em>Returns:</em> Result of the second function or error received from the first function.</p>
+<h5 id="generic-parameters_83">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first output tuple value received from previous function.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second output tuple value received from previous function.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of the second output tuple value received from previous function.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the output value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_97">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Output of previous function</td>
+</tr>
+<tr>
+<td>binder</td>
+<td>Passes the output of first function to the next one.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-match2">Method <a name="M%3aMonacs.Core.TupleResult.Match2%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%602%7d)"><code>Match2</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_84">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first tuple value in the result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second tuple value in the result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_98">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-match3">Method <a name="M%3aMonacs.Core.TupleResult.Match3%60%604(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%2c%60%603%7d%2cSystem.Func%7bMonacs.Core.ErrorDetails%2c%60%603%7d)"><code>Match3</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, calls <a href="#ok"><c>ok</c></a> function             with the value from the result as a parameter and returns its result.             Otherwise calls <a href="#error"><c>error</c></a> function and returns its result.</p>
+<h5 id="generic-parameters_85">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first tuple value in the result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second tuple value in the result.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of the third tuple value in the result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_99">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Function called for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Function called for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchto2">Method <a name="M%3aMonacs.Core.TupleResult.MatchTo2%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2c%60%602%2c%60%602)"><code>MatchTo2</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, returns <a href="#ok"><c>ok</c></a> value.             Otherwise returns <a href="#error"><c>error</c></a> value.</p>
+<h5 id="generic-parameters_86">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first tuple value in the result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second tuple value in the result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_100">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Value returned for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Value returned for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-matchto3">Method <a name="M%3aMonacs.Core.TupleResult.MatchTo3%60%604(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2c%60%603%2c%60%603)"><code>MatchTo3</code></a></h4>
+<p>Does the pattern matching on the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.             If the <a href="#result"><c>result</c></a> is Ok, returns <a href="#ok"><c>ok</c></a> value.             Otherwise returns <a href="#error"><c>error</c></a> value.</p>
+<h5 id="generic-parameters_87">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of the first tuple value in the result.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of the second tuple value in the result.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of the third tuple value in the result.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of the returned value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_101">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>The result to match on.</td>
+</tr>
+<tr>
+<td>ok</td>
+<td>Value returned for the Ok case.</td>
+</tr>
+<tr>
+<td>error</td>
+<td>Value returned for the Error case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-do2">Method <a name="M%3aMonacs.Core.TupleResult.Do2%60%602(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2cSystem.Action%7b%60%600%2c%60%601%7d)"><code>Do2</code></a></h4>
+<p>Performs action if the given result is on the succesful path.             The action takes given result as an argument.</p>
+<p><em>Returns:</em> Result passed to the method as an argument.</p>
+<h5 id="generic-parameters_88">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first tuple result value.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second tuple result value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_102">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Given result.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Action to perform.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-do3">Method <a name="M%3aMonacs.Core.TupleResult.Do3%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2cSystem.Action%7b%60%600%2c%60%601%2c%60%602%7d)"><code>Do3</code></a></h4>
+<p>Performs action if the given result is on the succesful path.             The action takes given result as an argument.</p>
+<p><em>Returns:</em> Result passed to the method as an argument.</p>
+<h5 id="generic-parameters_89">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first tuple result value.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second tuple result value.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of third tuple result value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_103">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Given result.</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Action to perform.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-trycatch2">Method <a name="M%3aMonacs.Core.TupleResult.TryCatch2%60%603(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%7d%2cSystem.Func%7b%60%600%2c%60%601%2cSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatch2</code></a></h4>
+<p>Invokes function in try/catch block and returns its result.             If any <a href="#T%3aSystem.Exception"><c>System.Exception</c></a> is raised during execution, error handler is invoked and error details are returned.</p>
+<p><em>Returns:</em> <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of invoked function in try block or <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> if any exception occurs.</p>
+<h5 id="generic-parameters_90">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first tuple result value.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second tuple result value.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of value returned by invoked function.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_104">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result to take the value from.</td>
+</tr>
+<tr>
+<td>tryFunc</td>
+<td>The function to be invoked in 'try' block.</td>
+</tr>
+<tr>
+<td>errorHandler</td>
+<td>Handler invoked in 'catch' block on any raised exception.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="method-trycatch3">Method <a name="M%3aMonacs.Core.TupleResult.TryCatch3%60%604(Monacs.Core.Result%7bSystem.ValueTuple%7b%60%600%2c%60%601%2c%60%602%7d%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%2c%60%603%7d%2cSystem.Func%7b%60%600%2c%60%601%2c%60%602%2cSystem.Exception%2cMonacs.Core.ErrorDetails%7d)"><code>TryCatch3</code></a></h4>
+<p>Invokes function in try/catch block and returns its result.             If any <a href="#T%3aSystem.Exception"><c>System.Exception</c></a> is raised during execution, error handler is invoked and error details are returned.</p>
+<p><em>Returns:</em> <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> of invoked function in try block or <a href="#T%3aMonacs.Core.ErrorDetails"><c>ErrorDetails</c></a> if any exception occurs.</p>
+<h5 id="generic-parameters_91">Generic parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TFst</td>
+<td>Type of first tuple result value.</td>
+</tr>
+<tr>
+<td>TSnd</td>
+<td>Type of second tuple result value.</td>
+</tr>
+<tr>
+<td>TTrd</td>
+<td>Type of third tuple result value.</td>
+</tr>
+<tr>
+<td>TResult</td>
+<td>Type of value returned by invoked function.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="parameters_105">Parameters</h5>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Result to take the value from.</td>
+</tr>
+<tr>
+<td>tryFunc</td>
+<td>The function to be invoked in 'try' block.</td>
+</tr>
+<tr>
+<td>errorHandler</td>
+<td>Handler invoked in 'catch' block on any raised exception.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="type-monacscoreunitresult">Type <a name="T%3aMonacs.Core.UnitResult"><code>Monacs.Core.UnitResult</code></a></h2>
+<p>Contains the set of extensions to work with the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type.</p>
+<h3 id="methods_7">Methods</h3>
+<h4 id="method-ok_1">Method <a name="M%3aMonacs.Core.UnitResult.Ok"><code>Ok</code></a></h4>
+<p>Creates the Ok case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> .</p>
+<h4 id="method-error_2">Method <a name="M%3aMonacs.Core.UnitResult.Error(Monacs.Core.ErrorDetails)"><code>Error</code></a></h4>
+<p>Creates the Error case instance of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> type, containing error instead of value.</p>
+<h5 id="parameters_106">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -3616,9 +4201,9 @@
 </tr>
 </tbody>
 </table>
-<h4 id="method-ignore">Method <a name="M%3aMonacs.Core.Unit.UnitResult.Ignore%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>Ignore</code></a></h4>
+<h4 id="method-ignore">Method <a name="M%3aMonacs.Core.UnitResult.Ignore%60%601(Monacs.Core.Result%7b%60%600%7d)"><code>Ignore</code></a></h4>
 <p>Rejects the value of the <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> and returns <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> instead.              If the input <a href="#T%3aMonacs.Core.Result%601"><c>Result`1</c></a> is Error then the error details are preserved.</p>
-<h5 id="generic-parameters_80">Generic parameters</h5>
+<h5 id="generic-parameters_92">Generic parameters</h5>
 <table>
 <thead>
 <tr>
@@ -3633,7 +4218,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="parameters_95">Parameters</h5>
+<h5 id="parameters_107">Parameters</h5>
 <table>
 <thead>
 <tr>
@@ -3650,7 +4235,7 @@
 </table>
 <h2 id="type-monacscoreunitunit">Type <a name="T%3aMonacs.Core.Unit.Unit"><code>Monacs.Core.Unit.Unit</code></a></h2>
 <p>Type that has only one value.              Used to replace void whenever some value is needed, e.g. you can return Task{Unit}.</p>
-<h3 id="methods_7">Methods</h3>
+<h3 id="methods_8">Methods</h3>
 <h4 id="method-equals_5">Method <a name="M%3aMonacs.Core.Unit.Unit.Equals(Monacs.Core.Unit.Unit)"><code>Equals</code></a></h4>
 <p><a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> is always equal to itself. There is only one possible value of <a href="#T%3aMonacs.Core.Unit.Unit"><c>Unit.Unit</c></a> .</p>
 <h4 id="method-equals_6">Method <a name="M%3aMonacs.Core.Unit.Unit.Equals(System.Object)"><code>Equals</code></a></h4>
